@@ -1,0 +1,146 @@
+/* 
+  Localizable.strings
+  WeightTracker
+
+  Created by Andrey Alymov on 23.01.2023.
+  
+*/
+
+// MARK: - Start screen
+"StartScreen.description" = "Записывайте свой вес, ИМТ, измерения тела и достигайте своих целей!";
+"StartScreen.appName" = "Трекер\nВеса";
+
+// MARK: - Onboarding screens
+"Onboarding.gender.enterGender" = "Пожалуйста выберите Ваш пол.\nЭто необходимо для точного измерения Индекса массы тела";
+"Onboarding.gender.male" = "Мужской";
+"Onboarding.gender.female" = "Женский";
+"Onboarding.birthday.enterBirthday" = "Введите дату вашего рождения";
+"Onboarding.height.enterHeight" = "Введите ваш рост";
+"Onboarding.goal.yourGoal" = "Ваша цель";
+"Onboarding.goal.loseWeight" = "Скинуть вес";
+"Onboarding.goal.gainWeight" = "Набрать вес";
+"Onboarding.goal.maintainWeight" = "Удерживать вес";
+"Onboarding.weight.enterWeight" = "Введите ваш вес";
+"Onboarding.goalWeight.enterWeightGoal" = "Введите ваш целевой вес";
+"Onboarding.questions.howOften" = "Как часто вы будете взвешиваться?";
+"Onboarding.questions.everyday" = "Каждый день";
+"Onboarding.questions.everyTwoThree" = "Каждые 2-3 дня";
+"Onboarding.questions.everyWeek" = "Каждую неделю";
+"Onboarding.questions.other" = "Другое";
+"Onboarding.rate.rateOurApp" = "Оценить наше приложение в App store";
+"Onboarding.rate.rate" = "Оценить";
+"Onboarding.rate.reviewMaria" = "Я начинаю свое утро с моего любимого приложения. А еще с весами и рулеткой)))";
+"Onboarding.rate.reviewWilliamsster" = "Я внимательно слежу за графиками, есть понимание и есть результат. Удобно, что вес синхронизируется с моими весами.";
+"Onboarding.rate.reviewAnabel" = "Лучшее приложение! Я использую каждый день. Все просто, удобно и КРАСИВО!";
+
+// MARK: - Units
+"Units.kg" = "кг";
+"Units.lbs" = "фунты";
+"Units.cm" = "см";
+"Units.ft" = "футы";
+
+// MARK: - Subscription
+"Subscription.title" = "Контролируйте свой вес с удовольствием";
+"Subscription.benefits.controlWeight" = "Контролируйте свой вес и ИМТ";
+"Subscription.benefits.measure" = "Измерьте свое тело";
+"Subscription.benefits.monitor" = "Отслеживайте прогресс и делитесь результатами";
+"Subscription.benefits.breakGoals" = "Разбейте цели на управляемые этапы";
+"Subscription.period.annually" = "Annually — $24.40 (3 days free)";
+"Subscription.period.perWeekAnnually" = "$0,46 — week / 3 days free";
+"Subscription.period.monthly" = "Monthly — $8.00 (3 days free)";
+"Subscription.period.perWeekMonthly" = "$24.40 — week / 3 days free";
+"Subscription.period.weekly" = "Weekly — $2.44";
+"Subscription.period.perWeekWeek" = "$2.44 — week";
+"Subscription.cancelAnytime" = "Отмена в любое время";
+"Subscription.privacy" = "Политика конфиденциальности";
+"Subscription.terms" = "Правила использования";
+"Subscription.annual" = "Ежегодная";
+"Subscription.weekly" = "Еженедельная";
+"Subscription.monthly" = "Ежемесячная";
+
+// MARK: - Widgets
+"Widget.waist" = "Талия";
+"Widget.chest" = "Грудь";
+"Widget.hip" = "Бедра";
+"Widget.weight" = "Вес";
+"Widget.bmi" = "ИМТ";
+
+// MARK: - Measurement history
+"Measurement.history.myWeightToday" = "Мой вес сегодня";
+"Measurement.history.myHipToday" = "Мои бедра сегодня";
+"Measurement.history.myChestToday" = "Mоя грудь сегодня";
+"Measurement.history.myWaistToday" = "Mоя талия сегодня";
+"Measurement.history.nothingLogget" = "Пока ничего не отмечено";
+
+// MARK: - BMI Widget
+"BmiWidget.verySevUnderweigth" = "Очень сильно недостаточный вес";
+"BmiWidget.sevUnderweigth" = "Сильно недостаточный вес";
+"BmiWidget.underweight" = "Недостаточный вес";
+"BmiWidget.normalWeight" = "Нормальный вес";
+"BmiWidget.overWeight" = "Избыток веса";
+"BmiWidget.obeseClass1" = "Избыток Class I";
+"BmiWidget.obeseClass2" = "Избыток Class II";
+"BmiWidget.obeseClass3" = "Избыток Class III";
+"BmiWidget.myIdealWeight" = "Мой идеальный вес:";
+"BmiWidget.myNormalWeight" = "Mой нормальный вес: ";
+"BmiWidget.upToMyNormalWeight" = "До моего нормального веса:";
+"BmiWidget.impossibleToCalc" = "Невозможно рассчитать";
+
+// MARK: Milestone widget
+"Milestone.oneMile" = "1 milestone = ";
+"Milestone.mileStartWeight" = "Начальный вес";
+"Milestone.mileGoaltWeight" = "Целевой вес";
+"Milestone.milestone" = "Milestone ";
+"Milestone.splitMyGoal" = "Разделить мою цель";
+"Milestone.into" = "на";
+"Milestone.milestones" = "milestones";
+"Milestone.start" = "Начать:";
+"Milestone.now" = "Сейчас:";
+"Milestone.goal" = "Цель:";
+"Milestone.complete" = "Завершить";
+"Milestone.toGo" = "осталось";
+"Milestone.completeOverall" = "выполнено в целом";
+"Milestone.of" = " из ";
+"Milestone.myGoal" = "Моя цель";
+"Milestone.miniGoalSegments" = " сегмента(ов) мини-целей";
+
+// MARK: Settings
+"Settings.profile.sectionTitle" = "Профиль";
+"Settings.appSettings.sectionTitle" = "Настройки приложения";
+"Settings.startingWeight" = "Начальный вес";
+"Settings.weightGoal" = "Целевой вес";
+"Settings.gender" = "Пол";
+"Settings.height" = "Рост";
+"Settings.age" = "Возраст";
+"Settings.units" = "Измерения";
+"Settings.healthSync" = "Синхронизация с Apple Health";
+"Settings.haptic" = "Виброотклик";
+"Settings.doYouLikeApp" = "Вам нравится приложение? Расскажи нам!";
+"Settings.suggestAFeature" = "Предложить улучшение";
+"Settings.contactUs" = "Проблема? Свяжитесь с нами";
+"Settings.reccomended" = "Порекоммендуйте друзьям";
+
+// MARK: - Periods
+"Periods.daily" = "Ежедневно";
+"Periods.weekly" = "Каждую неделю";
+"Periods.monthly" = "Месячно";
+"Periods.week" = "Неделя";
+"Periods.month" = "Месяц";
+"Periods.twoMonths" = "2 месяца";
+"Periods.threeMonths" = "3 месяца";
+"Periods.sixMonths" = "6 месяцев";
+"Periods.year" = "Год";
+"Periods.average.weeklyAverage" = "В среднем за неделю";
+"Periods.average.monthlyAverage" = "В среднем за месяц";
+
+// MARK: - Action buttons
+"Buttons.save" = "Сохранить";
+"Buttons.done" = "Готово";
+"Buttons.letsStart" = "Давайте начинать!";
+
+// MARK: - Alert messages
+"Alert.message.enterContext" = "Пожалуйста, введите больше контекста, чтобы продолжить";
+"Alert.message.holeNumbers" = "Используйте только целые числа";
+"Alert.message.incorrectHeight" = "Пожалуйста, введите правильный рост";
+"Alert.message.incorrectWeight" = "Пожалуйста, введите правильный вес";
+"Alert.message.incorrectData" = "Пожалуйста введите корректные измерения";

@@ -1,0 +1,146 @@
+/* 
+  Localizable.strings
+  WeightTracker
+
+  Created by Andrey Alymov on 23.01.2023.
+  
+*/
+
+// MARK: - Start screen
+"StartScreen.description" = "Record your weight, BMI, body measurements and reach your goals!";
+"StartScreen.appName" = "Weight\nTracker";
+
+// MARK: - Onboarding screens
+"Onboarding.gender.enterGender" = "Please enter your gender.\nThis is necessary for the correct calculation of BMI";
+"Onboarding.gender.male" = "Male";
+"Onboarding.gender.female" = "Female";
+"Onboarding.birthday.enterBirthday" = "Enter date of birth";
+"Onboarding.height.enterHeight" = "Enter your height";
+"Onboarding.goal.yourGoal" = "Your Goal";
+"Onboarding.goal.loseWeight" = "Lose Weight";
+"Onboarding.goal.gainWeight" = "Gain Weight";
+"Onboarding.goal.maintainWeight" = "Maintain Weight";
+"Onboarding.weight.enterWeight" = "Enter your weight";
+"Onboarding.goalWeight.enterWeightGoal" = "Enter your Goal Weight";
+"Onboarding.questions.howOften" = "How often will you weigh yourself?";
+"Onboarding.questions.everyday" = "Everyday";
+"Onboarding.questions.everyTwoThree" = "Every 2-3 days";
+"Onboarding.questions.everyWeek" = "Every week";
+"Onboarding.questions.other" = "Other";
+"Onboarding.rate.rateOurApp" = "Rate our app in the AppStore";
+"Onboarding.rate.rate" = "Rate";
+"Onboarding.rate.reviewMaria" = "I start my morning with my favorite app. And also with scales and a measuring tape)))";
+"Onboarding.rate.reviewWilliamsster" = "I carefully follow the charts, there is an understanding and there is a result. It is convenient that the weight is synchronized with my scales.";
+"Onboarding.rate.reviewAnabel" = "The best app! I use every day. Everything is simple, convenient and BEAUTIFUL!";
+
+// MARK: - Units
+"Units.kg" = "kg";
+"Units.lbs" = "lbs";
+"Units.cm" = "cm";
+"Units.ft" = "ft";
+
+// MARK: - Subscription
+"Subscription.title" = "Control your weight with pleasure";
+"Subscription.benefits.controlWeight" = "Control your weight and BMI";
+"Subscription.benefits.measure" = "Measure your body";
+"Subscription.benefits.monitor" = "Monitor progress and share results";
+"Subscription.benefits.breakGoals" = "Break goals into manageable milestones";
+"Subscription.period.annually" = "Annually — $24.40 (3 days free)";
+"Subscription.period.perWeekAnnually" = "$0,46 — week / 3 days free";
+"Subscription.period.monthly" = "Monthly — $8.00 (3 days free)";
+"Subscription.period.perWeekMonthly" = "$24.40 — week / 3 days free";
+"Subscription.period.weekly" = "Weekly — $2.44";
+"Subscription.period.perWeekWeek" = "$2.44 — week";
+"Subscription.cancelAnytime" = "Cancel anytime";
+"Subscription.privacy" = "Privacy Policy";
+"Subscription.terms" = "Term of Use";
+"Subscription.annual" = "Annually";
+"Subscription.weekly" = "Weekly";
+"Subscription.monthly" = "Monthly";
+
+// MARK: - Widgets
+"Widget.waist" = "Waist";
+"Widget.chest" = "Chest";
+"Widget.hip" = "Hip";
+"Widget.weight" = "Weight";
+"Widget.bmi" = "BMI";
+
+// MARK: - Measurement history
+"Measurement.history.myWeightToday" = "My Weight Today";
+"Measurement.history.myHipToday" = "My Hip Today";
+"Measurement.history.myChestToday" = "My Chest Today";
+"Measurement.history.myWaistToday" = "My Waist Today";
+"Measurement.history.nothingLogget" = "Nothing logget yet";
+
+// MARK: - BMI Widget
+"BmiWidget.verySevUnderweigth" = "Very severely underweight";
+"BmiWidget.sevUnderweigth" = "Severely underweight";
+"BmiWidget.underweight" = "Underweight";
+"BmiWidget.normalWeight" = "Normal";
+"BmiWidget.overWeight" = "Overweight";
+"BmiWidget.obeseClass1" = "Obese Class I";
+"BmiWidget.obeseClass2" = "Obese Class II";
+"BmiWidget.obeseClass3" = "Obese Class III";
+"BmiWidget.myIdealWeight" = "My ideal weight:";
+"BmiWidget.myNormalWeight" = "My normal weight: ";
+"BmiWidget.upToMyNormalWeight" = "Up to my normal weight:";
+"BmiWidget.impossibleToCalc" = "Impossible to calculate";
+
+// MARK: Milestone widget
+"Milestone.oneMile" = "1 milestone = ";
+"Milestone.mileStartWeight" = "Start Weight";
+"Milestone.mileGoaltWeight" = "Goal Weight";
+"Milestone.milestone" = "Milestone ";
+"Milestone.splitMyGoal" = "Split my goal";
+"Milestone.into" = "into";
+"Milestone.milestones" = "milestones";
+"Milestone.start" = "Start:";
+"Milestone.now" = "Now:";
+"Milestone.goal" = "Goal:";
+"Milestone.complete" = "Complete";
+"Milestone.toGo" = "to go";
+"Milestone.completeOverall" = "complete overall";
+"Milestone.of" = " of ";
+"Milestone.myGoal" = "My Goal";
+"Milestone.miniGoalSegments" = " mini-goal segments";
+
+// MARK: Settings
+"Settings.profile.sectionTitle" = "Profile";
+"Settings.appSettings.sectionTitle" = "AppSettings";
+"Settings.startingWeight" = "Starting Weight";
+"Settings.weightGoal" = "Weight Goal";
+"Settings.gender" = "Gender";
+"Settings.height" = "Height";
+"Settings.age" = "Age";
+"Settings.units" = "Units";
+"Settings.healthSync" = "Apple Health Sync";
+"Settings.haptic" = "Haptic Feedback";
+"Settings.doYouLikeApp" = "Do you like the app? Tell us!";
+"Settings.suggestAFeature" = "Suggest a feature";
+"Settings.contactUs" = "A problem? Contact us!";
+"Settings.reccomended" = "Recommend to a friends";
+
+// MARK: - Periods
+"Periods.daily" = "Daily";
+"Periods.weekly" = "Weekly";
+"Periods.monthly" = "Monthly";
+"Periods.week" = "week";
+"Periods.month" = "Month";
+"Periods.twoMonths" = "2 months";
+"Periods.threeMonths" = "3 months";
+"Periods.sixMonths" = "6 months";
+"Periods.year" = "Year";
+"Periods.average.weeklyAverage" = "Weekly Average";
+"Periods.average.monthlyAverage" = "Monthly Average";
+
+// MARK: - Action buttons
+"Buttons.save" = "Save";
+"Buttons.done" = "Done";
+"Buttons.letsStart" = "Let's start!";
+
+// MARK: - Alert messages
+"Alert.message.enterContext" = "Please enter more context to continue";
+"Alert.message.holeNumbers" = "Use only hole numbers";
+"Alert.message.incorrectHeight" = "Please enter the correct height";
+"Alert.message.incorrectWeight" = "Please enter the correct weight";
+"Alert.message.incorrectData" = "Please enter the correct measurement";
