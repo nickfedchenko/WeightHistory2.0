@@ -14,10 +14,11 @@ protocol USKeysProtocol {
 enum UserSettingsKeys: String, USKeysProtocol {
     case lenght
     case weight
-    case isFirstLaunch
+    case isOnboardingPassed
     case isUserSptilGoal
     case milestonesNumber
     case isHapticFedbackOn
     case isAppleHelthOn
     case isImeprial
+    case isUserMale
 }

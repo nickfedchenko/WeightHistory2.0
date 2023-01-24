@@ -32,6 +32,7 @@
 		<string>Prompt-SemiBoldItalic.ttf</string>
 		<string>Prompt-Thin.ttf</string>
 		<string>Prompt-ThinItalic.ttf</string>
+		<string>SFProDisplay-Heavy.ttf</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>

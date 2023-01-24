@@ -56,7 +56,6 @@ final class UserSettingsService: USServiceProtocol {
         get {
             getValue(key: .isImeprial) ?? false
         }
-        
         set {
             setValue(key: .isImeprial, value: newValue)
         }
@@ -67,14 +66,14 @@ final class UserSettingsService: USServiceProtocol {
         return weight
     }
     
-    // MARK: - First launch
+    // MARK: - Checking is onboarding screens passed?
     func onboardingWillNotShowingMore() {
-        setValue(key: .isFirstLaunch, value: false)
+        setValue(key: .isOnboardingPassed, value: false)
     }
     
-    func isFirstLaunch() -> Bool {
-        guard let isFirstLaunch: Bool = getValue(key: .isFirstLaunch) else { return true }
-        return isFirstLaunch
+    func isOnboardingPassed() -> Bool {
+        guard let isOnboardingPassed: Bool = getValue(key: .isOnboardingPassed) else { return true }
+        return isOnboardingPassed
     }
     
     // MARK: - Milestones
@@ -103,6 +102,19 @@ final class UserSettingsService: USServiceProtocol {
     
     func setIsAppleHealthOn(value: Bool) {
         setValue(key: .isAppleHelthOn, value: value)
+    }
+    
+    func setIsUserMale(value: Bool) {
+        setValue(key: .isUserMale, value: value)
+    }
+    
+    var isUserMale: Bool {
+        get {
+            getValue(key: .isUserMale) ?? false
+        }
+        set {
+            setValue(key: .isUserMale, value: newValue)
+        }
     }
     
     func getIsHapticFeedbackOn() -> Bool {
