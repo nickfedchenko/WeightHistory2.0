@@ -5,12 +5,11 @@
 //  Created by Andrey Alymov on 24.01.2023.
 //
 
-import Amplitude
 import UIKit
 
 final class UserGenderViewController: UIViewController {
     
-    //MARK: - Property list
+    // MARK: - Property list
     private var pageControl = CustomPageControl()
     private var genderImageView = UIImageView()
     private var screenDescriptionLabel = UILabel()
@@ -19,7 +18,7 @@ final class UserGenderViewController: UIViewController {
     
     private var viewModel = OnboardingViewModel()
         
-    //MARK: - Overrides
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -29,7 +28,7 @@ final class UserGenderViewController: UIViewController {
         increasePageControlSize()
     }
     
-    //MARK: - Configure UI
+    // MARK: - Configure UI
     private func configureUI() {
         addSubViews()
         setupConstraints()
@@ -83,7 +82,7 @@ final class UserGenderViewController: UIViewController {
     }
     
     @objc private func maleButtonTapped() {
-        viewModel.saveUserGender(with: 1)
+        viewModel.saveUserGender(value: 1)
         viewModel.isUserMale = true
         HapticFeedback.selection.vibrate()
         routeToNextVc()
@@ -97,7 +96,7 @@ final class UserGenderViewController: UIViewController {
     }
     
     @objc private func femaleButtonTapped() {
-        viewModel.saveUserGender(with: 0)
+        viewModel.saveUserGender(value: 0)
         viewModel.isUserMale = false
         HapticFeedback.selection.vibrate()
         routeToNextVc()
@@ -115,18 +114,14 @@ final class UserGenderViewController: UIViewController {
         }
     }
     
-    //MARK: - Other private methods
+    // MARK: - ROUTING
     func routeToNextVc() {
-        Amplitude.instance().logEvent(
-            "onb_1_complete",
-            withEventProperties: ["sex": (viewModel.isUserMale ? "male" : "female")]
-        )
-        let vc = BirthdayViewController()
+        let vc = UserBirthdayViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-//MARK: - Setup constraints
+// MARK: - Setup constraints
 extension UserGenderViewController {
     
     private func setupConstraints() {

@@ -282,9 +282,9 @@ final class CoreDataService {
         }
     }
     
-    func fetchAllDimensions<T: NSManagedObject>(for dimType: DimensionTypes, completion: (Result<[T], CDError>) -> Void) {
+    func fetchAllDimensions<T: NSManagedObject>(measurementType: MeasurementTypes, completion: (Result<[T], CDError>) -> Void) {
         let type: T.Type = {
-            switch dimType {
+            switch measurementType {
             case .chest:
                 return ChestMeasurement.self as! T.Type
             case .waist:
@@ -297,7 +297,7 @@ final class CoreDataService {
                 return WeightMeasurement.self as! T.Type
             }
         }()
-        switch dimType {
+        switch measurementType {
         case .chest:
             fetchAllData(from: type, completion: completion)
         case .waist:
@@ -310,9 +310,9 @@ final class CoreDataService {
         }
     }
     
-    func fetchLastDimension<T: NSManagedObject>(for dimType: DimensionTypes, completion: (Result<T, CDError>) -> Void) {
+    func fetchLastDimension<T: NSManagedObject>(measurementType: MeasurementTypes, completion: (Result<T, CDError>) -> Void) {
         let type: T.Type = {
-            switch dimType {
+            switch measurementType {
             case .chest:
                 return ChestMeasurement.self as! T.Type
             case .waist:
@@ -325,7 +325,7 @@ final class CoreDataService {
                 return WeightMeasurement.self as! T.Type
             }
         }()
-        switch dimType {
+        switch measurementType {
         case .chest:
             fetchLastDimension(from: type, completion: completion)
         case .waist:
@@ -338,8 +338,8 @@ final class CoreDataService {
         }
     }
     
-    func fetchDimensions(for dimType: DimensionTypes, period: Int, completion: (Result<[NSFetchRequestResult], Error>) -> Void) {
-        switch dimType {
+    func fetchDimensions(measurementType: MeasurementTypes, period: Int, completion: (Result<[NSFetchRequestResult], Error>) -> Void) {
+        switch measurementType {
         case .chest:
             fetchData(from: ChestMeasurement.self, period: period, completion: completion)
         case .waist:
@@ -354,31 +354,31 @@ final class CoreDataService {
     }
 
     
-    func deleteSpecificRecord(sample: MeasurementSample) {
-        formatter.dateFormat = "dd.MM.yyyy"
-        fetchAllDimensions(for: .weight) { result in
-            switch result {
-            case .success(let measurements):
-                guard
-                    let measurements = measurements as? [WeightMeasurement],
-                    let objectectToDelete = measurements.first(where:  { measurement in
-                        let sampleDateString = formatter.string(from: sample.date)
-                        let measurementDateString = formatter.string(from: measurement.date)
-                        return sampleDateString == measurementDateString
-                    })
-                else { return }
-                print("Object to delete \(objectToDelete.date)")
-                context.delete(objectToDelete)
-                do {
-                    try context.save()
-                } catch let error {
-                    print(error)
-                }
-            case .failure(let failure):
-                print(failure)
-            }
-        }
-    }
+//    func deleteSpecificRecord(sample: MeasurementSample) {
+//        formatter.dateFormat = "dd.MM.yyyy"
+//        fetchAllDimensions(for: .weight) { result in
+//            switch result {
+//            case .success(let measurements):
+//                guard
+//                    let measurements = measurements as? [WeightMeasurement],
+//                    let objectectToDelete = measurements.first(where:  { measurement in
+//                        let sampleDateString = formatter.string(from: sample.date)
+//                        let measurementDateString = formatter.string(from: measurement.date)
+//                        return sampleDateString == measurementDateString
+//                    })
+//                else { return }
+//                print("Object to delete \(objectToDelete.date)")
+//                context.delete(objectToDelete)
+//                do {
+//                    try context.save()
+//                } catch let error {
+//                    print(error)
+//                }
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
+//    }
 }
 
 

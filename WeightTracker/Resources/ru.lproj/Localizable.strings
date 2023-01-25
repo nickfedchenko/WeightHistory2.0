@@ -136,7 +136,7 @@
 // MARK: - Action buttons
 "Buttons.save" = "Сохранить";
 "Buttons.done" = "Готово";
-"Buttons.letsStart" = "Давайте начинать!";
+"Buttons.letsStart" = "Начнем!";
 
 // MARK: - Alert messages
 "Alert.message.enterContext" = "Пожалуйста, введите больше контекста, чтобы продолжить";

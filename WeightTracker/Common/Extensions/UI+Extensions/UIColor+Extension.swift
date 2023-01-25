@@ -23,12 +23,20 @@ extension UIColor {
     // MARK: - Background
     static let backgroundMainColor = UIColor(hex: "#FEF4EC")
     
-    
-    static let weightPrimary = UIColor(hex: "#1698B8")
-    static let mainBackground = UIColor(hex: "#FEF4EC")
+    // MARK: - Onboarding
     static let onboardingDescriptionColor = UIColor(hex: "#78461D")
     static let onboardingPageControlCurrent = UIColor(hex: "#CAB4A4")
     static let onboardingPageControlSecondary = UIColor(hex: "#D9D9D9")
+    static let onboardingBackItemColor = UIColor(hex: "#CAB4A4")
+    static let keyboardButtonsBackgroundColor = UIColor(hex: "#CAB4A4")
+    static let keyboardButtonsSelectedTextColor = UIColor(hex: "#1698B8")
+    static let keyboardButtonsUnselectedTextColor = UIColor(hex: "#FFFFFF", alpha: 0.7)
+    static let keyboardButtonsSelectedItemColor = UIColor(hex: "#FFFFFF")
+
+
+    
+    static let weightPrimary = UIColor(hex: "#1698B8")
+    static let mainBackground = UIColor(hex: "#FEF4EC")
     static let buttonDisable = UIColor(hex: "#D2D2D2")
     static let buttonShadowColor = UIColor(hex: "#C38D61")
     static let whiteSeventy = UIColor(hex: "#FFFFFF", alpha: 0.7)
@@ -42,20 +50,20 @@ extension UIColor {
     static let onboardCloseButton = UIColor(hex: "#A78A74")
     static let closeButtonGray = UIColor(hex: "#D0D0D0")
 
-    static let waistDimensionColor = UIColor(hex: "#F15626")
-    static let chestDimensionColor = UIColor(hex: "#D9821C")
-    static let hipDimensionColor = UIColor(hex: "#D62599")
-    static let weightDimensionColor = UIColor(hex: "#1698B8")
+    static let waistMeasurementColor = UIColor(hex: "#F15626")
+    static let chestMeasurementColor = UIColor(hex: "#D9821C")
+    static let hipMeasurementColor = UIColor(hex: "#D62599")
+    static let weightMeasurementColor = UIColor(hex: "#1698B8")
     
     static let waistDimensionBackgroundColor = UIColor(hex: "#F15626", alpha: 0.1)
     static let chestDimensionBackgroundColor = UIColor(hex: "#D9821C", alpha: 0.1)
     static let hipDimensionBackgroundColor = UIColor(hex: "#D62599", alpha: 0.1)
     static let weightDimensionBackgroundColor = UIColor(hex: "#1698B8", alpha: 0.1)
     
-    static let waistDimensionColor80 = UIColor(hex: "#F15626", alpha: 0.8)
-    static let chestDimensionColor80 = UIColor(hex: "#D9821C", alpha: 0.8)
-    static let hipDimensionColor80 = UIColor(hex: "#D62599", alpha: 0.8)
-    static let weightDimensionColor80 = UIColor(hex: "#1698B8", alpha: 0.8)
+    static let waistMeasurementColor80 = UIColor(hex: "#F15626", alpha: 0.8)
+    static let chestMeasurementColor80 = UIColor(hex: "#D9821C", alpha: 0.8)
+    static let hipMeasurementColor80 = UIColor(hex: "#D62599", alpha: 0.8)
+    static let weightMeasurementColor80 = UIColor(hex: "#1698B8", alpha: 0.8)
     
     static let waistDimensionBorderColor = UIColor(hex: "#F15626", alpha: 0.5)
     static let chestDimensionBorderColor = UIColor(hex: "#D9821C", alpha: 0.5)
