@@ -167,8 +167,8 @@ final class UserGoalWeightViewController: UIViewController {
     
     // MARK: - ROUTING
     private func routeToNextVc() {
-//        let vc = RateAppViewController()
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = RateAppViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func routBack() {

@@ -277,12 +277,13 @@ final class CoreDataService {
             completion(.success(firstUserInfo))
         }
         catch {
-            completion(.failure(CDError.fetchingError(error: error.localizedDescription)))
-            debugPrint("Problems with fetching FirstUserInfo from CoreData - \(error.localizedDescription)")
+            completion(.failure(CDError.fetchingError(
+                error: "Problems with fetching FirstUserInfo from CoreData - \(error.localizedDescription)"
+            )))
         }
     }
     
-    func fetchAllDimensions<T: NSManagedObject>(measurementType: MeasurementTypes, completion: (Result<[T], CDError>) -> Void) {
+    func fetchAllMeasurements<T: NSManagedObject>(measurementType: MeasurementTypes, completion: (Result<[T], CDError>) -> Void) {
         let type: T.Type = {
             switch measurementType {
             case .chest:
@@ -310,7 +311,7 @@ final class CoreDataService {
         }
     }
     
-    func fetchLastDimension<T: NSManagedObject>(measurementType: MeasurementTypes, completion: (Result<T, CDError>) -> Void) {
+    func fetchLastMeasurement<T: NSManagedObject>(measurementType: MeasurementTypes, completion: (Result<T, CDError>) -> Void) {
         let type: T.Type = {
             switch measurementType {
             case .chest:
@@ -338,7 +339,7 @@ final class CoreDataService {
         }
     }
     
-    func fetchDimensions(measurementType: MeasurementTypes, period: Int, completion: (Result<[NSFetchRequestResult], Error>) -> Void) {
+    func fetchMeasurement(measurementType: MeasurementTypes, period: Int, completion: (Result<[NSFetchRequestResult], Error>) -> Void) {
         switch measurementType {
         case .chest:
             fetchData(from: ChestMeasurement.self, period: period, completion: completion)
@@ -353,10 +354,9 @@ final class CoreDataService {
         }
     }
 
-    
 //    func deleteSpecificRecord(sample: MeasurementSample) {
 //        formatter.dateFormat = "dd.MM.yyyy"
-//        fetchAllDimensions(for: .weight) { result in
+//        fetchAllMeasurements(measurementType: .weight) { result in
 //            switch result {
 //            case .success(let measurements):
 //                guard
