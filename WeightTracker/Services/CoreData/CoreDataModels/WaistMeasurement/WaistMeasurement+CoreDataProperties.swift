@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-extension WaistMeasurement {
+extension WaistMeasurement: WTGraphRawDataModel {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<WaistMeasurement> {
         return NSFetchRequest<WaistMeasurement>(entityName: "WaistMeasurement")

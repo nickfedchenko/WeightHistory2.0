@@ -339,7 +339,7 @@ final class CoreDataService {
         }
     }
     
-    func fetchMeasurement(measurementType: MeasurementTypes, period: Int, completion: (Result<[NSFetchRequestResult], Error>) -> Void) {
+    func fetchMeasurements(measurementType: MeasurementTypes, period: Int, completion: (Result<[NSFetchRequestResult], Error>) -> Void) {
         switch measurementType {
         case .chest:
             fetchData(from: ChestMeasurement.self, period: period, completion: completion)
@@ -354,31 +354,30 @@ final class CoreDataService {
         }
     }
 
-//    func deleteSpecificRecord(sample: MeasurementSample) {
-//        formatter.dateFormat = "dd.MM.yyyy"
-//        fetchAllMeasurements(measurementType: .weight) { result in
-//            switch result {
-//            case .success(let measurements):
-//                guard
-//                    let measurements = measurements as? [WeightMeasurement],
-//                    let objectectToDelete = measurements.first(where:  { measurement in
-//                        let sampleDateString = formatter.string(from: sample.date)
-//                        let measurementDateString = formatter.string(from: measurement.date)
-//                        return sampleDateString == measurementDateString
-//                    })
-//                else { return }
-//                print("Object to delete \(objectToDelete.date)")
-//                context.delete(objectToDelete)
-//                do {
-//                    try context.save()
-//                } catch let error {
-//                    print(error)
-//                }
-//            case .failure(let failure):
-//                print(failure)
-//            }
-//        }
-//    }
+    func deleteSpecificRecord(sample: MeasurementSample) {
+        formatter.dateFormat = "dd.MM.yyyy"
+        fetchAllMeasurements(measurementType: .weight) { result in
+            switch result {
+            case .success(let measurements):
+                guard
+                    let measurements = measurements as? [WeightMeasurement],
+                    let objectToDelete = measurements.first(where:  { measurement in
+                        let sampleDateString = formatter.string(from: sample.date)
+                        let measurementDateString = formatter.string(from: measurement.date)
+                        return sampleDateString == measurementDateString
+                    })
+                else { return }
+                context.delete(objectToDelete)
+                do {
+                    try context.save()
+                } catch let error {
+                    debugPrint(error)
+                }
+            case .failure(let failure):
+                debugPrint(failure)
+            }
+        }
+    }
 }
 
 

@@ -21,25 +21,29 @@ final class AppCoordinator {
         self.window = window
     }
         
-    // MARK: - App start method
+    // MARK: - APPLICATION START
     func start() {
-        showOnboarding()
+        if userSettingsService.isOnboardingPassed() {
+            showMainStage()
+        } else {
+            showOnboarding()
+        }
     }
     
-    // MARK: - Preparing screen
+    // MARK: - PREPARING SCREENS
     private func showOnboarding() {
         let startScreen = StartScreenViewController()
         navigationController.setViewControllers([startScreen], animated: true)
         window.rootViewController = navigationController
     }
     
-//    private func showMainScreen() {
-//        let mainScreen = MainScreenViewController()
-//        navigationController.setViewControllers([mainScreen], animated: true)
-//        window.rootViewController = navigationController
-//    }
+    private func showMainStage() {
+        let mainStage = MainStageViewController()
+        navigationController.setViewControllers([mainStage], animated: true)
+        window.rootViewController = navigationController
+    }
     
-    // MARK: - Configure third party libraries
+    // MARK: - CONFIGURE THIRD-PARTY LIBRABRIES
     private func configureApphudSDK() {
         Apphud.start(apiKey: "ОБНОВИТЬ ИЗ ТРЕЛЛО")
     }

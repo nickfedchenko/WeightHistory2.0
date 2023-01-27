@@ -72,7 +72,7 @@ final class UserSettingsService: USServiceProtocol {
     }
     
     func isOnboardingPassed() -> Bool {
-        guard let isOnboardingPassed: Bool = getValue(key: .isOnboardingPassed) else { return true }
+        guard let isOnboardingPassed: Bool = getValue(key: .isOnboardingPassed) else { return false }
         return isOnboardingPassed
     }
     

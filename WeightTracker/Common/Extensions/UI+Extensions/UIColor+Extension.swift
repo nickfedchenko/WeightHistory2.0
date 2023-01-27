@@ -33,6 +33,11 @@ extension UIColor {
     static let keyboardButtonsUnselectedTextColor = UIColor(hex: "#FFFFFF", alpha: 0.7)
     static let keyboardButtonsSelectedItemColor = UIColor(hex: "#FFFFFF")
 
+    // MARK: - CHART
+    static let chartPeriodSelectorShadowColor = UIColor(hex: "C38D61")
+    static let chartPeriodSelectorBorderColor = UIColor(hex: "A78A74")
+    static let weightPrimary = UIColor(hex: "#1698B8")
+    static let weightPrimary = UIColor(hex: "#1698B8")
 
     
     static let weightPrimary = UIColor(hex: "#1698B8")
