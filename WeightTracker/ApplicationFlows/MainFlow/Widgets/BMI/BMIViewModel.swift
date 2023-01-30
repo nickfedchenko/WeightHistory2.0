@@ -194,7 +194,7 @@ final class BMIViewModel {
             }
         } else {
             userIdealKgWeight = 0
-            idealUserWeightString = R.string.localizable.impossibleToCalc()
+            idealUserWeightString = R.string.localizable.bmiWidgetImpossibleToCalc()
         }
     }
     

@@ -23,13 +23,13 @@ final class MainStageViewController: UIViewController {
     
     private var widgetsViewContainer = UIView()
     private var bmiWidgetView = BMIWidgetView()
-    private var bmiView = BMIView()
+    private var bmiView = BMIOpenView()
     private var chestWidgetView = CompactWidgetView()
     private var waistWidgetView = CompactWidgetView()
     private var hipWidgetView = CompactWidgetView()
     private var addFastWeightWidgetView = FastWeightWidgetView()
     private var weightWidgetView = WeightWidgetView()
-    private var milestoneWidgetView = MilestoneWidgetView()
+    private var goalsWidgetView = GoalsWidgetView()
     private var avatarImageView = UIImageView()
     
     private var viewModel = MainStageViewModel()
@@ -79,7 +79,7 @@ final class MainStageViewController: UIViewController {
         widgetsViewContainer.addSubview(hipWidgetView)
         widgetsViewContainer.addSubview(addFastWeightWidgetView)
         widgetsViewContainer.addSubview(weightWidgetView)
-        widgetsViewContainer.addSubview(milestoneWidgetView)
+        widgetsViewContainer.addSubview(goalsWidgetView)
     }
     
     private func addSubbviewsWithScrollView() {
@@ -97,7 +97,7 @@ final class MainStageViewController: UIViewController {
         widgetsViewContainer.addSubview(hipWidgetView)
         widgetsViewContainer.addSubview(addFastWeightWidgetView)
         widgetsViewContainer.addSubview(weightWidgetView)
-        widgetsViewContainer.addSubview(milestoneWidgetView)
+        widgetsViewContainer.addSubview(goalsWidgetView)
     }
     
     private func configureView() {
@@ -115,7 +115,7 @@ final class MainStageViewController: UIViewController {
     // MARK: - WIDGETS CONFIGURATION
     private func configureWidgets() {
         configureChartView()
-        configureMilestoneWidget()
+        configureGoalsWidget()
         configureBmiWidget()
         configureWeightWidget()
         configureChestWidget()
@@ -254,37 +254,37 @@ final class MainStageViewController: UIViewController {
         }
     }
     
-    // MARK: - MILESTONE WIDGET
-    private func configureMilestoneWidget() {
-        milestoneWidgetView.configure()
-        configureMilestoneWidgetViewTapGesture()
+    // MARK: - GOALS WIDGET
+    private func configureGoalsWidget() {
+        goalsWidgetView.configure()
+        configureGoalsWidgetViewTapGesture()
     }
     
-    private func configureMilestoneWidgetViewTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onMilestoneWidgetTapped))
+    private func configureGoalsWidgetViewTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onGoalsWidgetTapped))
         tapGesture.cancelsTouchesInView = false
-        if milestoneWidgetView.widgetType == .maintaineWeight {
+        if goalsWidgetView.widgetType == .maintaineWeight {
             return
         } else {
-            milestoneWidgetView.addGestureRecognizer(tapGesture)
+            goalsWidgetView.addGestureRecognizer(tapGesture)
         }
     }
     
-    private func updateMilestoneWidget() {
-        milestoneWidgetView.removeFromSuperview()
-        milestoneWidgetView = MilestoneWidgetView()
-        widgetsViewContainer.addSubview(milestoneWidgetView)
+    private func updateGoalsWidget() {
+        goalsWidgetView.removeFromSuperview()
+        goalsWidgetView = GoalsWidgetView()
+        widgetsViewContainer.addSubview(goalsWidgetView)
         setupConstraints()
-        configureMilestoneWidget()
+        configureGoalsWidget()
     }
     
-    @objc private func onMilestoneWidgetTapped() {
+    @objc private func onGoalsWidgetTapped() {
         HapticFeedback.medium.vibrate()
         guard !self.showPaywallConditionally() else { return }
-        let vc = MilestoneViewController()
+        let vc = GoalsViewController()
         vc.widgetCloseCallback = { [weak self] in
             guard let self = self else { return }
-            self.updateMilestoneWidget()
+            self.updateGoalsWidget()
         }
         self.present(vc, animated: true)
     }
@@ -297,12 +297,12 @@ final class MainStageViewController: UIViewController {
     }
     
     private func configureBmiWidgetCallback() {
-        bmiWidgetView.onBmiWidgetPressed = { [weak self] in
+        bmiWidgetView.onWidgetPressed = { [weak self] in
             guard let self = self else { return }
             self.viewModel.bmiAmplitudeLogEvent()
             guard !self.showPaywallConditionally() else { return }
             HapticFeedback.medium.vibrate()
-            self.bmiView = BMIView()
+            self.bmiView = BMIOpenView()
             self.bmiView.readyHandler = { [weak self] in
                 guard let self = self else {
                     return

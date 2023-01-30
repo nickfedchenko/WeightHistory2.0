@@ -179,7 +179,7 @@ final class MainStageViewModel {
     }
     
     // MARK: - APMLITUDE METHODS
-    private func bmiAmplitudeLogEvent() {
+    func bmiAmplitudeLogEvent() {
         amplitude.logEvent("bmiTap")
     }
     
