@@ -5,7 +5,6 @@
 //  Created by Andrey Alymov on 26.01.2023.
 //
 
-import Amplitude
 import ApphudSDK
 import UIKit
 
@@ -24,11 +23,11 @@ final class MainStageViewController: UIViewController {
     private var widgetsViewContainer = UIView()
     private var bmiWidgetView = BMIWidgetView()
     private var bmiView = BMIOpenView()
-    private var chestWidgetView = CompactWidgetView()
-    private var waistWidgetView = CompactWidgetView()
-    private var hipWidgetView = CompactWidgetView()
-    private var addFastWeightWidgetView = FastWeightWidgetView()
-    private var weightWidgetView = WeightWidgetView()
+    private var compactChestWidgetView = WTCompactWidgetView()
+    private var compactWaistWidgetView = WTCompactWidgetView()
+    private var compactHipWidgetView = WTCompactWidgetView()
+    private var fastAddWeightWidgetView = FastAddWeightWidgetView()
+    private var currentWeightWidgetView = CurrentWeightWidgetView()
     private var goalsWidgetView = GoalsWidgetView()
     private var avatarImageView = UIImageView()
     
@@ -74,11 +73,11 @@ final class MainStageViewController: UIViewController {
         chartViewContainer.addSubview(wtChartModeSelector)
         chartViewContainer.addSubview(wtChartPeriodSelector)
         widgetsViewContainer.addSubview(bmiWidgetView)
-        widgetsViewContainer.addSubview(chestWidgetView)
-        widgetsViewContainer.addSubview(waistWidgetView)
-        widgetsViewContainer.addSubview(hipWidgetView)
-        widgetsViewContainer.addSubview(addFastWeightWidgetView)
-        widgetsViewContainer.addSubview(weightWidgetView)
+        widgetsViewContainer.addSubview(compactChestWidgetView)
+        widgetsViewContainer.addSubview(compactWaistWidgetView)
+        widgetsViewContainer.addSubview(compactHipWidgetView)
+        widgetsViewContainer.addSubview(fastAddWeightWidgetView)
+        widgetsViewContainer.addSubview(currentWeightWidgetView)
         widgetsViewContainer.addSubview(goalsWidgetView)
     }
     
@@ -92,11 +91,11 @@ final class MainStageViewController: UIViewController {
         chartViewContainer.addSubview(wtChartModeSelector)
         chartViewContainer.addSubview(wtChartPeriodSelector)
         widgetsViewContainer.addSubview(bmiWidgetView)
-        widgetsViewContainer.addSubview(chestWidgetView)
-        widgetsViewContainer.addSubview(waistWidgetView)
-        widgetsViewContainer.addSubview(hipWidgetView)
-        widgetsViewContainer.addSubview(addFastWeightWidgetView)
-        widgetsViewContainer.addSubview(weightWidgetView)
+        widgetsViewContainer.addSubview(compactChestWidgetView)
+        widgetsViewContainer.addSubview(compactWaistWidgetView)
+        widgetsViewContainer.addSubview(compactHipWidgetView)
+        widgetsViewContainer.addSubview(fastAddWeightWidgetView)
+        widgetsViewContainer.addSubview(currentWeightWidgetView)
         widgetsViewContainer.addSubview(goalsWidgetView)
     }
     
@@ -106,10 +105,10 @@ final class MainStageViewController: UIViewController {
     }
     
     private func updateWidgetsAfterSettings() {
-        updateMilestoneWidget()
+        updateGoalsWidget()
         bmiWidgetView.configure()
-        weightWidgetView.updateWidget()
-        configureChestWidget()
+        currentWeightWidgetView.updateWidget()
+        configureCompactChestWidget()
     }
     
     // MARK: - WIDGETS CONFIGURATION
@@ -117,11 +116,11 @@ final class MainStageViewController: UIViewController {
         configureChartView()
         configureGoalsWidget()
         configureBmiWidget()
-        configureWeightWidget()
-        configureChestWidget()
-        configureWaistWidget()
-        configureHipWidget()
-        configureAddFastWeightWidget()
+        configureCurrentWeightWidget()
+        configureCompactChestWidget()
+        configureCompactWaistWidget()
+        configureCompactHipWidget()
+        configureFastAddWeightWidget()
     }
     
     // MARK: - AVATAR (user settings)
@@ -152,9 +151,9 @@ final class MainStageViewController: UIViewController {
     
     @objc private func onAvatarTapped() {
         HapticFeedback.medium.vibrate()
-        let vc = UserSettingsViewController()
-        viewModel.isAppWasLaunched = true
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = UserSettingsViewController()
+//        viewModel.isAppWasLaunched = true
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - CHART
@@ -327,150 +326,148 @@ final class MainStageViewController: UIViewController {
         }
     }
     
-    // MARK: - WEIGHT WIDGET
-    private func configureWeightWidget() {
-        weightWidgetView.configure()
-        configureWeightWidgetViewTapGesture()
+    // MARK: - CURRENT WEIGHT WIDGET
+    private func configureCurrentWeightWidget() {
+        currentWeightWidgetView.configure()
+        configureCurrentWeightWidgetViewTapGesture()
     }
     
-    private func configureWeightWidgetViewTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onWeightWidgetTapped))
+    private func configureCurrentWeightWidgetViewTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onCurrentWeightWidgetTapped))
         tapGesture.cancelsTouchesInView = false
-        weightWidgetView.addGestureRecognizer(tapGesture)
+        currentWeightWidgetView.addGestureRecognizer(tapGesture)
     }
     
-    @objc private func onWeightWidgetTapped() {
+    @objc private func onCurrentWeightWidgetTapped() {
         HapticFeedback.medium.vibrate()
-        Amplitude.instance().logEvent("weightTap")
+        viewModel.currentWeightWidgetAmplitudeLogEvent()
         guard !self.showPaywallConditionally() else { return }
-        let vc = BodyHistoryWidgetViewController()
-        vc.widgetType = .weight
+        let vc = BodyHistoryViewController()
+        vc.viewType = .weight
         
-        vc.widgetCloseCallback = { [weak self] in
+        vc.closeCallback = { [weak self] in
             guard let self = self else { return }
-            self.weightWidgetView.updateWidget()
+            self.currentWeightWidgetView.updateWidget()
             self.updateChartViewData()
         }
         
         vc.addMeasurementCallback = { [weak self] in
             guard let self = self else { return }
-            let measurVC = MeasurementTodayViewController(type: .weight)
-            measurVC.closeWidgetCallback = { [weak self] in
+            let measurVC = MeasurementsViewController(type: .weight)
+            measurVC.closeCallback = { [weak self] in
                 guard let self = self else { return }
-                self.weightWidgetView.configure()
+                self.currentWeightWidgetView.configure()
                 self.bmiWidgetView.configure()
-                self.updateMilestoneWidget()
+                self.updateGoalsWidget()
                 self.updateChartViewData()
-                self.configureWeightWidgetViewTapGesture()
+                self.configureCurrentWeightWidgetViewTapGesture()
             }
             self.present(measurVC, animated: true)
         }
         self.present(vc, animated: true)
     }
     
-    // MARK: - CHEST WIDGET
-    private func configureChestWidget() {
-        chestWidgetView.widgetType = .chest
-        chestWidgetView.configure(with: viewModel.getLastDimension(for: .chest))
-        configureChestWidgetCallback()
+    // MARK: - COMPACT CHEST WIDGET
+    private func configureCompactChestWidget() {
+        compactChestWidgetView.widgetType = .chest
+        compactChestWidgetView.updateLastMeasurement(with: viewModel.getLastMeasurement(for: .chest))
+        configureCompactChestWidgetCallback()
     }
     
-    private func configureChestWidgetCallback() {
-        chestWidgetView.onWidgetTapped = { [weak self] in
+    private func configureCompactChestWidgetCallback() {
+        compactChestWidgetView.onWidgetPressed = { [weak self] in
             guard let self = self else { return }
-            Amplitude.instance().logEvent("chestTap")
+            self.viewModel.compactChestWidgetAmplitudeLogEvent()
             guard !self.showPaywallConditionally() else { return }
-            let vc = BodyHistoryWidgetViewController()
-            vc.widgetType = .chest
+            let vc = BodyHistoryViewController()
+            vc.viewType = .chest
             
-            vc.widgetCloseCallback = { [weak self] in
+            vc.closeCallback = { [weak self] in
                 guard let self = self else { return }
-                self.chestWidgetView.configure(with: self.viewModel.getLastDimension(for: .chest))
+                self.compactChestWidgetView.updateLastMeasurement(with: self.viewModel.getLastMeasurement(for: .chest))
                 self.updateChartViewData()
             }
             
             vc.addMeasurementCallback = { [weak self] in
                 guard let self = self else { return }
-                let measurVC = MeasurementTodayViewController(type: .chest)
-                measurVC.widgetType = .chest
-                measurVC.closeWidgetCallback = { [weak self] in
+                let measurVC = MeasurementsViewController(type: .chest)
+                measurVC.viewType = .chest
+                measurVC.closeCallback = { [weak self] in
                     guard let self = self else { return }
                     self.updateChartViewData()
-                    self.chestWidgetView.configure(with: self.viewModel.getLastDimension(for: .chest))
+                    self.compactChestWidgetView.updateLastMeasurement(with: self.viewModel.getLastMeasurement(for: .chest))
                 }
                 self.present(measurVC, animated: true)
             }
-            
             self.present(vc, animated: true)
         }
     }
     
-    // MARK: - WAIST WIDGET
-    private func configureWaistWidget() {
-        waistWidgetView.widgetType = .waist
-        waistWidgetView.configure(with: viewModel.getLastDimension(for: .waist))
-        configureWaistWidgetCallback()
+    // MARK: - COMPACT WAIST WIDGET
+    private func configureCompactWaistWidget() {
+        compactWaistWidgetView.widgetType = .waist
+        compactWaistWidgetView.updateLastMeasurement(with: viewModel.getLastMeasurement(for: .waist))
+        configureCompactWaistWidgetCallback()
     }
     
-    private func configureWaistWidgetCallback() {
-        waistWidgetView.onWidgetTapped = { [weak self] in
+    private func configureCompactWaistWidgetCallback() {
+        compactWaistWidgetView.onWidgetPressed = { [weak self] in
             guard let self = self else { return }
-            Amplitude.instance().logEvent("waistTap")
+            self.viewModel.compactWaistWidgetAmplitudeLogEvent()
             guard !self.showPaywallConditionally() else { return }
-            let vc = BodyHistoryWidgetViewController()
-            vc.widgetType = .waist
+            let vc = BodyHistoryViewController()
+            vc.viewType = .waist
             
-            vc.widgetCloseCallback = { [weak self] in
+            vc.closeCallback = { [weak self] in
                 guard let self = self else { return }
-                self.waistWidgetView.configure(with: self.viewModel.getLastDimension(for: .waist))
+                self.compactWaistWidgetView.updateLastMeasurement(with: self.viewModel.getLastMeasurement(for: .waist))
                 self.updateChartViewData()
             }
             
             vc.addMeasurementCallback = { [weak self] in
                 guard let self = self else { return }
-                let measurVC = MeasurementTodayViewController(type: .waist)
-                measurVC.widgetType = .waist
-                measurVC.closeWidgetCallback = { [weak self] in
+                let measurVC = MeasurementsViewController(type: .waist)
+                measurVC.viewType = .waist
+                measurVC.closeCallback = { [weak self] in
                     guard let self = self else { return }
                     self.updateChartViewData()
-                    self.waistWidgetView.configure(with: self.viewModel.getLastDimension(for: .waist))
+                    self.compactWaistWidgetView.updateLastMeasurement(with: self.viewModel.getLastMeasurement(for: .waist))
                 }
                 self.present(measurVC, animated: true)
             }
-            
             self.present(vc, animated: true)
         }
     }
     
-    // MARK: - HIP WIDGET
-    private func configureHipWidget() {
-        hipWidgetView.widgetType = .hip
-        hipWidgetView.configure(with: viewModel.getLastDimension(for: .hip))
-        configureHipWidgetCallback()
+    // MARK: - COMPACT HIP WIDGET
+    private func configureCompactHipWidget() {
+        compactHipWidgetView.widgetType = .hip
+        compactHipWidgetView.updateLastMeasurement(with: viewModel.getLastMeasurement(for: .hip))
+        configureCompactHipWidgetCallback()
     }
     
-    private func configureHipWidgetCallback() {
-        hipWidgetView.onWidgetTapped = { [weak self] in
+    private func configureCompactHipWidgetCallback() {
+        compactHipWidgetView.onWidgetPressed = { [weak self] in
             guard let self = self else { return }
-            Amplitude.instance().logEvent("hipTap")
+            self.viewModel.compactHipWidgetAmplitudeLogEvent()
             guard !self.showPaywallConditionally() else { return }
-            let vc = BodyHistoryWidgetViewController()
-            vc.widgetType = .hip
+            let vc = BodyHistoryViewController()
+            vc.viewType = .hip
             
-            vc.widgetCloseCallback = { [weak self] in
+            vc.closeCallback = { [weak self] in
                 guard let self = self else { return }
-                self.hipWidgetView.configure(with: self.viewModel.getLastDimension(for: .hip))
+                self.compactHipWidgetView.updateLastMeasurement(with: self.viewModel.getLastMeasurement(for: .hip))
                 self.updateChartViewData()
             }
             
             vc.addMeasurementCallback = { [weak self] in
                 guard let self = self else { return }
-                let measurVC = MeasurementTodayViewController(type: .hip)
-                measurVC.widgetType = .hip
-                measurVC.closeWidgetCallback = { [weak self] in
+                let measurVC = MeasurementsViewController(type: .hip)
+                measurVC.viewType = .hip
+                measurVC.closeCallback = { [weak self] in
                     guard let self = self else { return }
                     self.updateChartViewData()
-                    self.hipWidgetView.configure(with: self.viewModel.getLastDimension(for: .hip))
+                    self.compactHipWidgetView.updateLastMeasurement(with: self.viewModel.getLastMeasurement(for: .hip))
                 }
                 self.present(measurVC, animated: true)
             }
@@ -480,30 +477,29 @@ final class MainStageViewController: UIViewController {
     }
     
     // MARK: - FAST ADD WEIGHT WIDGET
-    private func configureAddFastWeightWidget() {
-        addFastWeightWidgetView.configure()
-        configureAddFastWeightWidgetCallback()
+    private func configureFastAddWeightWidget() {
+        fastAddWeightWidgetView.configure()
+        configureFastAddWeightWidgetCallback()
     }
     
-    private func configureAddFastWeightWidgetCallback() {
-        addFastWeightWidgetView.onFastAddWeightPressed = { [weak self] in
+    private func configureFastAddWeightWidgetCallback() {
+        fastAddWeightWidgetView.onWidgetPressed = { [weak self] in
             guard let self = self else { return }
-            Amplitude.instance().logEvent("fastWeightAddTap")
+            self.viewModel.fastAddWidgetAmplitudeLogEvent()
             guard !self.showPaywallConditionally() else { return }
-            let vc = MeasurementTodayViewController(type: .weight)
-            vc.widgetType = .weight
+            let vc = MeasurementsViewController(type: .weight)
+            vc.viewType = .weight
 
-            vc.closeWidgetCallback = { [weak self] in
+            vc.closeCallback = { [weak self] in
                 guard let self = self else { return }
-                self.weightWidgetView.updateWidget()
+                self.currentWeightWidgetView.updateWidget()
                 self.bmiWidgetView.configure()
-                self.updateMilestoneWidget()
+                self.updateGoalsWidget()
                 self.updateChartViewData()
             }
             self.present(vc, animated: true)
         }
     }
-
 }
 
 // MARK: - Setup constraints
@@ -583,7 +579,7 @@ extension MainStageViewController {
         }
         
         // Chest
-        chestWidgetView.snp.makeConstraints { make in
+        compactChestWidgetView.snp.makeConstraints { make in
             make.top.equalTo(bmiWidgetView.snp.bottom).inset(-16)
             make.height.equalTo(viewModel.compactWidgetHeight)
             make.width.equalTo(viewModel.widgetWidth)
@@ -591,23 +587,23 @@ extension MainStageViewController {
         }
         
         // Waist
-        waistWidgetView.snp.makeConstraints { make in
-            make.top.equalTo(chestWidgetView.snp.bottom).inset(-16)
+        compactWaistWidgetView.snp.makeConstraints { make in
+            make.top.equalTo(compactChestWidgetView.snp.bottom).inset(-16)
             make.height.equalTo(viewModel.compactWidgetHeight)
             make.width.equalTo(viewModel.widgetWidth)
             make.trailing.equalToSuperview()
         }
         
         // Hip
-        hipWidgetView.snp.makeConstraints { make in
-            make.top.equalTo(waistWidgetView.snp.bottom).inset(-16)
+        compactHipWidgetView.snp.makeConstraints { make in
+            make.top.equalTo(compactWaistWidgetView.snp.bottom).inset(-16)
             make.height.equalTo(viewModel.compactWidgetHeight)
             make.width.equalTo(viewModel.widgetWidth)
             make.trailing.equalToSuperview()
         }
         
         // Fast weight
-        addFastWeightWidgetView.snp.makeConstraints { make in
+        fastAddWeightWidgetView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.leading.equalToSuperview()
             make.height.equalTo(viewModel.smallWidgetHeight)
@@ -615,19 +611,19 @@ extension MainStageViewController {
         }
         
         // Weight
-        weightWidgetView.snp.makeConstraints { make in
+        currentWeightWidgetView.snp.makeConstraints { make in
             make.height.equalTo(viewModel.mediumWidgetHeight)
             make.width.equalTo(viewModel.widgetWidth)
             make.leading.equalToSuperview()
-            make.bottom.equalTo(addFastWeightWidgetView.snp.top).inset(-16)
+            make.bottom.equalTo(fastAddWeightWidgetView.snp.top).inset(-16)
         }
         
         // Milestone
-        milestoneWidgetView.snp.makeConstraints { make in
+        goalsWidgetView.snp.makeConstraints { make in
             make.height.equalTo(viewModel.largeWidgetHeight)
             make.width.equalTo(viewModel.widgetWidth)
             make.leading.top.equalToSuperview()
-            make.bottom.equalTo(weightWidgetView.snp.top).inset(-16)
+            make.bottom.equalTo(currentWeightWidgetView.snp.top).inset(-16)
         }
     }
 }
@@ -635,10 +631,11 @@ extension MainStageViewController {
 // MARK: - Paywall
 extension MainStageViewController {
     func showPaywallConditionally() -> Bool {
-        guard !Apphud.hasActiveSubscription() else { return false }
-        let paywall = PaywallViewController()
-        paywall.modalPresentationStyle = .fullScreen
-        present(paywall, animated: true)
-        return true
+//        guard !Apphud.hasActiveSubscription() else { return false }
+//        let paywall = PaywallViewController()
+//        paywall.modalPresentationStyle = .fullScreen
+//        present(paywall, animated: true)
+//        return true
+        return false
     }
 }

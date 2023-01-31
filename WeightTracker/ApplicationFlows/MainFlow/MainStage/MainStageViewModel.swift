@@ -173,7 +173,11 @@ final class MainStageViewModel {
         if lastMeasurement == 0 {
             lastMeasurementString = "-:-"
         } else {
-            lastMeasurementString = "\(String(format: "%.1f", lastMeasurement)) " + userLengthUnit
+            if String(lastMeasurement).hasSuffix(".0") {
+                lastMeasurementString = "\(String(lastMeasurement).dropLast(2)) " + userLengthUnit
+            } else {
+                lastMeasurementString = "\(String(format: "%.1f", lastMeasurement)) " + userLengthUnit
+            }
         }
         return lastMeasurementString
     }
@@ -181,6 +185,26 @@ final class MainStageViewModel {
     // MARK: - APMLITUDE METHODS
     func bmiAmplitudeLogEvent() {
         amplitude.logEvent("bmiTap")
+    }
+    
+    func currentWeightWidgetAmplitudeLogEvent() {
+        amplitude.logEvent("weightTap")
+    }
+    
+    func compactChestWidgetAmplitudeLogEvent() {
+        amplitude.logEvent("chestTap")
+    }
+    
+    func compactHipWidgetAmplitudeLogEvent() {
+        amplitude.logEvent("hipTap")
+    }
+    
+    func compactWaistWidgetAmplitudeLogEvent() {
+        amplitude.logEvent("waistTap")
+    }
+    
+    func fastAddWidgetAmplitudeLogEvent() {
+        amplitude.logEvent("fastWeightAddTap")
     }
     
     //MARK: - WIDGETS SIZE & INDENTS

@@ -68,7 +68,7 @@ final class UserSettingsService: USServiceProtocol {
     
     // MARK: - Checking is onboarding screens passed?
     func onboardingWillNotShowingMore() {
-        setValue(key: .isOnboardingPassed, value: false)
+        setValue(key: .isOnboardingPassed, value: true)
     }
     
     func isOnboardingPassed() -> Bool {

@@ -56,7 +56,7 @@ final class GoalsViewController: UIViewController {
     private func configureUI() {
         addSubViews()
         setupConstraints()
-        setupMailestoneTableViewConstraints()
+        setupGoalsTableViewConstraints()
         configureView()
         configureGoalsTableView()
         configureSeporatorView()
@@ -378,7 +378,7 @@ extension GoalsViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        cell?.configure(mileText: viewModel.milestonesArray[indexPath.row].milestoneLabeltext, indexText: "\(viewModel.milestonesArray[indexPath.row].milestoneIndex) " + viewModel.userWeightUnit)
+        cell?.configure(mileText: viewModel.goalsArray[indexPath.row].goalsLabelText, indexText: "\(viewModel.goalsArray[indexPath.row].goalsIndex) " + viewModel.userWeightUnit)
         return cell ?? UITableViewCell()
     }
     
@@ -514,7 +514,7 @@ extension GoalsViewController {
         }
     }
     
-    private func setupMailestoneTableViewConstraints() {
+    private func setupGoalsTableViewConstraints() {
         if !viewModel.isDeviceOld {
             goalsTableView.snp.makeConstraints { make in
                 make.leading.equalToSuperview().inset(45)

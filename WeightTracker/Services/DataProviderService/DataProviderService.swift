@@ -70,7 +70,7 @@ final class DataProviderService: DataProviderServiceProtocol {
   
     static let shared = DataProviderService()
     
-    private let healthKitManager = HealthKitService.shared
+    private let healthKitService = HealthKitService.shared
     private let dbService = CoreDataService.shared
     private let userSettingsService = UserSettingsService.shared
     
@@ -151,11 +151,11 @@ final class DataProviderService: DataProviderServiceProtocol {
     }
     
     func requestPermission(completion: @escaping (Bool) -> Void) {
-        healthKitManager.requestPermission(completion: completion)
+        healthKitService.requestPermission(completion: completion)
     }
     
     func fetchSamples(for sampleType: HKSampleType, fromDate: Date, toDate: Date, completion: @escaping ([HKQuantitySample]?, Error?) -> Void) {
-        healthKitManager.fetchSamples(for: sampleType, fromDate: fromDate, toDate: toDate, completion: completion)
+        healthKitService.fetchSamples(for: sampleType, fromDate: fromDate, toDate: toDate, completion: completion)
     }
     
     func fetchWeightInfoConditionally(completion: @escaping ([MeasurementSample]) -> Void) {

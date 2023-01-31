@@ -9,7 +9,7 @@ import UIKit
 
 final class ActionButton: UIButton {
     
-    //MARK: - Property list
+    // MARK: - Property list
     var isMainState = true
     
     // MARK: - Overrides properies
@@ -27,7 +27,7 @@ final class ActionButton: UIButton {
         }
     }
     
-    //MARK: - Public methods
+    // MARK: - Public methods
     func makeMainState(isForSmallState: Bool = false) {
         isUserInteractionEnabled = true
         backgroundColor = .clear
@@ -49,24 +49,24 @@ final class ActionButton: UIButton {
         layer.masksToBounds = false
     }
     
-//    func makeBodyWidgetState(for type: DimensionTypes) {
-//        isUserInteractionEnabled = true
-//        backgroundColor = .clear
-//        isEnabled = true
-//
-//        clipsToBounds = true
-//        layer.cornerRadius = 16
-//        layer.cornerCurve = .continuous
-//        layer.backgroundColor = type.color.cgColor
-//        layer.borderWidth = 0
-//        isMainState = true
-//
-//        layer.shadowColor = type.color.cgColor
-//        layer.shadowOffset = CGSize(width: 0, height: 12)
-//        layer.shadowRadius = 31
-//        layer.shadowOpacity = 0.49
-//        layer.masksToBounds = false
-//    }
+    func makeBodyWidgetState(for type: MeasurementTypes) {
+        isUserInteractionEnabled = true
+        backgroundColor = .clear
+        isEnabled = true
+
+        clipsToBounds = true
+        layer.cornerRadius = 16
+        layer.cornerCurve = .continuous
+        layer.backgroundColor = type.color.cgColor
+        layer.borderWidth = 0
+        isMainState = true
+
+        layer.shadowColor = type.color.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 12)
+        layer.shadowRadius = 31
+        layer.shadowOpacity = 0.49
+        layer.masksToBounds = false
+    }
     
     func makeWhiteState(isForSmallState: Bool = false) {
         isUserInteractionEnabled = true
@@ -117,31 +117,31 @@ final class ActionButton: UIButton {
         layer.borderColor = UIColor.white.cgColor
     }
     
-//    func makeAddMeasurementState(with type: DimensionTypes) {
-//        isUserInteractionEnabled = true
-//        backgroundColor = .clear
-//        setTitleColor(.white, for: .normal)
-//        titleLabel?.font = R.font.promptSemiBold(size: 20)
-//        isEnabled = true
-//
-//        clipsToBounds = true
-//        layer.cornerRadius = 16
-//        layer.cornerCurve = .continuous
-//        layer.backgroundColor = type.color.cgColor
-//        if type == .weight {
-//            layer.borderWidth = 1
-//            layer.borderColor = UIColor.saveButtonBorderColor.cgColor
-//        }
-//        isMainState = true
-//
-//        layer.shadowColor = type.color.cgColor
-//        layer.shadowOffset = CGSize(width: 4, height: 8)
-//        layer.shadowRadius = 12
-//        layer.shadowOpacity = 0.49
-//        layer.masksToBounds = false
-//    }
+    func makeAddMeasurementState(with type: MeasurementTypes) {
+        isUserInteractionEnabled = true
+        backgroundColor = .clear
+        setTitleColor(.white, for: .normal)
+        titleLabel?.font = R.font.promptSemiBold(size: 20)
+        isEnabled = true
+
+        clipsToBounds = true
+        layer.cornerRadius = 16
+        layer.cornerCurve = .continuous
+        layer.backgroundColor = type.color.cgColor
+        if type == .weight {
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.saveButtonBorderColor.cgColor
+        }
+        isMainState = true
+
+        layer.shadowColor = type.color.cgColor
+        layer.shadowOffset = CGSize(width: 4, height: 8)
+        layer.shadowRadius = 12
+        layer.shadowOpacity = 0.49
+        layer.masksToBounds = false
+    }
     
-    //MARK: - Private methods
+    // MARK: - Private methods
     private func drawShadows() {
         let path =  UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
         let firstShadowLayer = CAShapeLayer()
@@ -178,5 +178,4 @@ final class ActionButton: UIButton {
         layer.insertSublayer(secondShadowLayer, at: 0)
         layer.insertSublayer(thirdShadowLayer, at: 0)
     }
-
 }

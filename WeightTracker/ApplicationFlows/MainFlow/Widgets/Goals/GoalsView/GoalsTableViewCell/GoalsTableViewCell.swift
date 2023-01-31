@@ -23,7 +23,12 @@ final class GoalsTableViewCell: UITableViewCell {
     private var goalsLabel = UILabel()
     private var goalsIndexLabel = UILabel()
     
-    var cellState: GoalsCellState = .completedState
+    var cellState: GoalsCellState = .completedState {
+        didSet {
+            configureView()
+            configureMilestoneCircleView()
+        }
+    }
     
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

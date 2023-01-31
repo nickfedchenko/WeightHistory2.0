@@ -173,12 +173,12 @@ final class PaywallViewController: UIViewController {
                 self?.showSimpleAlert(titleText: "Error performing purchase with \(error.localizedDescription)")
             }
             if let subscription = result.subscription, subscription.isActive() {
-                self?.routeToMainScreen()
+                self?.routeToMainStage()
             } else if let purchase = result.nonRenewingPurchase, purchase.isActive() {
-                self?.routeToMainScreen()
+                self?.routeToMainStage()
             } else {
                 if Apphud.hasActiveSubscription() {
-                    self?.routeToMainScreen()
+                    self?.routeToMainStage()
                 }
             }
         }
@@ -194,14 +194,12 @@ final class PaywallViewController: UIViewController {
     
     @objc private func closeButtonPressed() {
         HapticFeedback.selection.vibrate()
-        routeToMainScreen()
+        routeToMainStage()
     }
     
     // MARK: - ROUTING
-    private func routeToMainScreen() {
-//        let vc = MainScreenViewController()
-        let vc = UIViewController()
-
+    private func routeToMainStage() {
+        let vc = MainStageViewController()
         if let navigationController = navigationController {
             vc.navigationController?.isNavigationBarHidden = true
             navigationController.setViewControllers([vc], animated: true)
