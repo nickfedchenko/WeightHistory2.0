@@ -23,7 +23,6 @@ final class BMIViewModel {
 
     private var userLastWeight: Double = 0 {
         didSet {
-            print("set userLastWeight \(userLastWeight)")
             configure()
         }
     }
@@ -55,23 +54,13 @@ final class BMIViewModel {
     }
     
     private func calculateMetricalBMI() {
-        print("user height in imperial \(getUserHeight())")
         let height = getUserHeight() / 100  // из футов в дюймы
-        print("user height in meters\(height)")
-        print("pow height \(pow(height, 2))")
-        print("User last weight is \(userLastWeight)")
         bmi = userLastWeight / pow(height, 2)
-        print("imperial bmi is\(bmi)")
     }
     
     private func calculateImperBMI() {
-        print("user height in imperial \(getUserHeight())")
         let height = getUserHeight() * 12 // из футов в дюймы
-        print("user height in meters\(height)")
-        print("pow height \(pow(height, 2))")
-        print("User last weight is \(userLastWeight)")
         bmi = userLastWeight / pow(height, 2) * 703
-        print("imperial bmi is\(bmi)")
     }
                                 
     private func getBMItype() {

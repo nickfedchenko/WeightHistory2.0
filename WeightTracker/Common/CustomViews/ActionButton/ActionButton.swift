@@ -73,7 +73,8 @@ final class ActionButton: UIButton {
         backgroundColor = .clear
         setTitleColor(.weightPrimary, for: .normal)
         setTitleColor(.white, for: .highlighted)
-        titleLabel?.font = R.font.promptBold(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20)
+//        titleLabel?.font = R.font.promptBold(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20)
+        titleLabel?.font = FontService.shared.localFont(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20, bold: true)
         isEnabled = true
 
         clipsToBounds = true
@@ -94,7 +95,8 @@ final class ActionButton: UIButton {
         isUserInteractionEnabled = false
         backgroundColor = .clear
         setTitleColor(.white, for: .normal)
-        titleLabel?.font = R.font.promptBold(size: 20)
+//        titleLabel?.font = R.font.promptBold(size: 20)
+        titleLabel?.font = FontService.shared.localFont(size: 20, bold: true)
 
         clipsToBounds = true
         layer.cornerRadius = 16
@@ -108,7 +110,8 @@ final class ActionButton: UIButton {
         isUserInteractionEnabled = false
         backgroundColor = .clear
         setTitleColor(.white, for: .normal)
-        titleLabel?.font = R.font.promptBold(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20)
+//        titleLabel?.font = R.font.promptBold(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20)
+        titleLabel?.font = FontService.shared.localFont(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20, bold: true)
 
         clipsToBounds = true
         layer.cornerRadius = 16
@@ -121,7 +124,8 @@ final class ActionButton: UIButton {
         isUserInteractionEnabled = true
         backgroundColor = .clear
         setTitleColor(.white, for: .normal)
-        titleLabel?.font = R.font.promptSemiBold(size: 20)
+//        titleLabel?.font = R.font.promptSemiBold(size: 20)
+        titleLabel?.font = FontService.shared.localFont(size: 20, bold: false)
         isEnabled = true
 
         clipsToBounds = true

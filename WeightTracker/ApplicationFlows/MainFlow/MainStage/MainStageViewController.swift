@@ -151,9 +151,9 @@ final class MainStageViewController: UIViewController {
     
     @objc private func onAvatarTapped() {
         HapticFeedback.medium.vibrate()
-//        let vc = UserSettingsViewController()
-//        viewModel.isAppWasLaunched = true
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = SettingsViewController()
+        viewModel.isAppWasLaunched = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - CHART
@@ -208,7 +208,6 @@ final class MainStageViewController: UIViewController {
             let currentDate = Date()
             self.wtChart.viewModel.currentDate = currentDate
             self.viewModel.getDataForChart(for: mode.measurementType, period: self.wtChart.viewModel.period.days) { [weak self] samples in
-                print("dataFor chart is \(samples)")
                 self?.wtChart.setNewData(data: samples, for: mode, direction: direction)
             }
             self.wtChartPeriodSelector.updateColor(for: mode)

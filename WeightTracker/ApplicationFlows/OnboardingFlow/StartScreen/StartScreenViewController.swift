@@ -50,7 +50,7 @@ final class StartScreenViewController: UIViewController {
         appNameLabel.numberOfLines = 0
         appNameLabel.lineBreakMode = .byWordWrapping
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1
+        paragraphStyle.lineHeightMultiple = 0.72
         paragraphStyle.alignment = .center
         appNameLabel.attributedText = NSMutableAttributedString(
             string: R.string.localizable.startScreenAppName().uppercased(),
@@ -101,6 +101,7 @@ extension StartScreenViewController {
         appNameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(154)
             make.centerX.equalToSuperview()
+            make.height.equalTo(200)
         }
 
         screenDescriptionLabel.snp.makeConstraints { make in

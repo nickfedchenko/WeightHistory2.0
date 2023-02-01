@@ -60,12 +60,10 @@ final class MainStageViewModel {
                     chartData = measurenments as! [HipMeasurement]
                     completion(chartData)
                 case .weight:
-                    chartData = measurenments as! [WeightMeasurement]
                     dataProviderService.fetchWeightInfoConditionally { samples in
                         completion(samples)
                     }
                 case .bmi:
-                    let weightMeasurements = measurenments as! [WeightMeasurement]
                     dataProviderService.fetchWeightInfoConditionally { [weak self] samples in
                         guard let self = self else { return }
                         chartData = self.setBMIDataForChart(from: samples)

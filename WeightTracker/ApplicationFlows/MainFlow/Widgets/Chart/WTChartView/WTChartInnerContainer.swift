@@ -102,7 +102,7 @@ final class WTChartInnerContainer: UIView {
     private func drawControlPoints() {
         for (index, controlPoint) in drawingData.innerContainerDrawingData.controlPoints.enumerated() {
             var view: UIView
-            if index == drawingData.innerContainerDrawingData.controlPoints.count - 1 {
+            if index == 0 {
                 view = WTLastDotView()
                 view.frame = CGRect(x: 0, y: 0, width: 16, height: 16)
                 (view as? WTLastDotView)?.commonColor = drawingData.innerContainerDrawingData.color

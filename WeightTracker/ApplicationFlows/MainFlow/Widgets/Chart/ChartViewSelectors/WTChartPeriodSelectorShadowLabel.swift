@@ -23,7 +23,8 @@ final class WTChartPeriodSelectorShadowLabel: UIView {
         let label = UILabel()
         label.text = R.string.localizable.periodsWeek().capitalized
         label.textColor = .textPrimaryBlueColor
-        label.font = R.font.promptSemiBold(size: 13)
+//        label.font = R.font.promptSemiBold(size: 13)
+        label.font = FontService.shared.localFont(size: 13, bold: false)
         label.textAlignment = .center
         return label
     }()

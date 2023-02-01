@@ -156,7 +156,6 @@ final class WTChartViewModel {
         let values = makesValues(for: dateLabels.dateRange.min, and: dateLabels.dateRange.max)
         let valuesForAxis = makeHorizontalAxisValues(for: values)
         let controlPoints = generateControlPoints(for: values, with: valuesForAxis, dates: dateLabels.dateRange)
-        print(controlPoints)
         let hAxisYCoordinates: [CGFloat] = makeHAxisYControlPoints(for: valuesForAxis)
         let vAxisXCoordinates: [CGFloat] = makeVAxisXControlPoints(for: dateLabels.labels)
         

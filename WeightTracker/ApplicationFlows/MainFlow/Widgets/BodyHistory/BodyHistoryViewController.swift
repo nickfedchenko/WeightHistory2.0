@@ -112,7 +112,8 @@ final class BodyHistoryViewController: UIViewController {
     private func configureWidgetTitleLabel() {
         titleLabel.text = viewType.title
         titleLabel.textColor = viewType.color
-        titleLabel.font = R.font.promptSemiBold(size: 20)
+//        titleLabel.font = R.font.promptSemiBold(size: 20)
+        titleLabel.font = FontService.shared.localFont(size: 20, bold: false)
     }
     
     // MARK: - CLOSE BUTTON

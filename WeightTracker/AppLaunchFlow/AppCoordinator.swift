@@ -45,12 +45,12 @@ final class AppCoordinator {
     
     // MARK: - CONFIGURE THIRD-PARTY LIBRABRIES
     private func configureApphudSDK() {
-        Apphud.start(apiKey: "ОБНОВИТЬ ИЗ ТРЕЛЛО")
+        Apphud.start(apiKey: "app_2GRrpGPdhK66w4EbTcbJwTqknCGpmu")
     }
     
     private func configureAmplitude() {
         Amplitude.instance().trackingSessionEvents = true
-        Amplitude.instance().initializeApiKey("ОБНОВИТЬ ИЗ ТРЕЛЛО", userId: Apphud.userID())
+        Amplitude.instance().initializeApiKey("ad65a7c8175c1f57f7d5a4eda911a49e", userId: Apphud.userID())
         Amplitude.instance().logEvent("app_start")
     }
 }

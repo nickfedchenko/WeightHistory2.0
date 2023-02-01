@@ -34,8 +34,6 @@
 		<string>Prompt-ThinItalic.ttf</string>
 		<string>SFProDisplay-Heavy.ttf</string>
 	</array>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

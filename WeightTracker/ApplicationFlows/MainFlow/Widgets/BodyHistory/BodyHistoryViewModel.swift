@@ -337,56 +337,56 @@ final class BodyHistoryViewModel {
         return Calendar.current.date(byAdding: .day, value: -7, to: date)!
     }
     
-    // MARK: - Getting monthly average dimension
+    // MARK: - GETTING AVERAGE MOTHLY MESUREMENT
     func getWeightMonthlyAverageMeasurements() {
         if !averageMeasurements.isEmpty {
             averageMeasurements = []
         }
         var currentDate = Date()
 
-        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: Date())))!
-        var monthAgo = Calendar.current.date(byAdding: .day, value: +1, to: firstDayOfCurrentMonth)!
-        
-        var dimentionsInWeek: Double = 0
-        var sumDimensionsInWeek: Double = 0
+        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: currentDate))!
+        var monthAgo = Calendar.current.date(byAdding: .day, value: 0, to: firstDayOfCurrentMonth)!
+
+        var measurementsInMonth: Double = 0
+        var sumMeasurementsInMonth: Double = 0
         var templeArray = weightMeasurementsFromHK
         
         guard let lastDate = templeArray.last?.date else { return }
+
         let firstDayOfLastMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: lastDate)))!
-        
+
         while currentDate >= firstDayOfLastMonth {
 
             for i in 0..<templeArray.count {
-                if templeArray[i].date > monthAgo {
-                    dimentionsInWeek += 1
-                    sumDimensionsInWeek += templeArray[i].value
+                if templeArray[i].date >= monthAgo {
+                    measurementsInMonth += 1
+                    sumMeasurementsInMonth += templeArray[i].value
                 }
             }
             
-            for _ in 0...Int(dimentionsInWeek) {
+            for _ in 0...Int(measurementsInMonth) {
                 if templeArray.count != 1 {
                     templeArray.removeFirst()
                 }
             }
             
-            let averageWeekDimension = round(sumDimensionsInWeek / dimentionsInWeek * 10) / 10.0
-            let stringAverageWeekDimension = String(averageWeekDimension)
+            let averageMonthMeasurements = round(sumMeasurementsInMonth / measurementsInMonth * 10) / 10.0
+            let stringAverageMonthMeasurements = String(averageMonthMeasurements)
             
             let formatter = DateFormatter()
-            
             formatter.dateFormat = "MMM yyyy"
             
             let stringDatePeriod = "\(formatter.string(from: monthAgo))"
             
-            if stringAverageWeekDimension != "nan" {
-                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageWeekDimension))
+            if stringAverageMonthMeasurements != "nan" {
+                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageMonthMeasurements))
             }
             
             currentDate = Calendar.current.date(byAdding: .month, value: -1, to: monthAgo)!
             
             monthAgo = currentDate
-            dimentionsInWeek = 0
-            sumDimensionsInWeek = 0
+            measurementsInMonth = 0
+            sumMeasurementsInMonth = 0
         }
     }
     
@@ -396,11 +396,11 @@ final class BodyHistoryViewModel {
         }
         var currentDate = Date()
 
-        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: Date())))!
-        var monthAgo = Calendar.current.date(byAdding: .day, value: +1, to: firstDayOfCurrentMonth)!
+        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: currentDate))!
+        var monthAgo = Calendar.current.date(byAdding: .day, value: 0, to: firstDayOfCurrentMonth)!
         
-        var dimentionsInWeek: Double = 0
-        var sumDimensionsInWeek: Double = 0
+        var measurementsInMonth: Double = 0
+        var sumMeasurementsInMonth: Double = 0
         var templeArray = waistMeasurements
         
         guard let lastDate = templeArray.last?.date else { return }
@@ -410,19 +410,19 @@ final class BodyHistoryViewModel {
 
             for i in 0..<templeArray.count {
                 if templeArray[i].date > monthAgo {
-                    dimentionsInWeek += 1
-                    sumDimensionsInWeek += templeArray[i].waist
+                    measurementsInMonth += 1
+                    sumMeasurementsInMonth += templeArray[i].waist
                 }
             }
             
-            for _ in 0...Int(dimentionsInWeek) {
+            for _ in 0...Int(measurementsInMonth) {
                 if templeArray.count != 1 {
                     templeArray.removeFirst()
                 }
             }
             
-            let averageWeekDimension = round(sumDimensionsInWeek / dimentionsInWeek * 10) / 10.0
-            let stringAverageWeekDimension = String(averageWeekDimension)
+            let averageMonthMeasurements = round(sumMeasurementsInMonth / measurementsInMonth * 10) / 10.0
+            let stringAverageMonthMeasurements = String(averageMonthMeasurements)
             
             let formatter = DateFormatter()
             
@@ -430,15 +430,15 @@ final class BodyHistoryViewModel {
             
             let stringDatePeriod = "\(formatter.string(from: monthAgo))"
             
-            if stringAverageWeekDimension != "nan" {
-                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageWeekDimension))
+            if stringAverageMonthMeasurements != "nan" {
+                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageMonthMeasurements))
             }
             
             currentDate = Calendar.current.date(byAdding: .month, value: -1, to: monthAgo)!
             
             monthAgo = currentDate
-            dimentionsInWeek = 0
-            sumDimensionsInWeek = 0
+            measurementsInMonth = 0
+            sumMeasurementsInMonth = 0
         }
     }
     
@@ -448,11 +448,11 @@ final class BodyHistoryViewModel {
         }
         var currentDate = Date()
 
-        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: Date())))!
-        var monthAgo = Calendar.current.date(byAdding: .day, value: +1, to: firstDayOfCurrentMonth)!
+        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: currentDate))!
+        var monthAgo = Calendar.current.date(byAdding: .day, value: 0, to: firstDayOfCurrentMonth)!
         
-        var dimentionsInWeek: Double = 0
-        var sumDimensionsInWeek: Double = 0
+        var measurementsInMonth: Double = 0
+        var sumMeasurementsInMonth: Double = 0
         var templeArray = chestMeasurements
         
         guard let lastDate = templeArray.last?.date else { return }
@@ -462,19 +462,19 @@ final class BodyHistoryViewModel {
 
             for i in 0..<templeArray.count {
                 if templeArray[i].date > monthAgo {
-                    dimentionsInWeek += 1
-                    sumDimensionsInWeek += templeArray[i].chest
+                    measurementsInMonth += 1
+                    sumMeasurementsInMonth += templeArray[i].chest
                 }
             }
             
-            for _ in 0...Int(dimentionsInWeek) {
+            for _ in 0...Int(measurementsInMonth) {
                 if templeArray.count != 1 {
                     templeArray.removeFirst()
                 }
             }
             
-            let averageWeekDimension = round(sumDimensionsInWeek / dimentionsInWeek * 10) / 10.0
-            let stringAverageWeekDimension = String(averageWeekDimension)
+            let averageMonthMeasurements = round(sumMeasurementsInMonth / measurementsInMonth * 10) / 10.0
+            let stringAverageMonthMeasurements = String(averageMonthMeasurements)
             
             let formatter = DateFormatter()
             
@@ -482,15 +482,15 @@ final class BodyHistoryViewModel {
             
             let stringDatePeriod = "\(formatter.string(from: monthAgo))"
             
-            if stringAverageWeekDimension != "nan" {
-                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageWeekDimension))
+            if stringAverageMonthMeasurements != "nan" {
+                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageMonthMeasurements))
             }
             
             currentDate = Calendar.current.date(byAdding: .month, value: -1, to: monthAgo)!
             
             monthAgo = currentDate
-            dimentionsInWeek = 0
-            sumDimensionsInWeek = 0
+            measurementsInMonth = 0
+            sumMeasurementsInMonth = 0
         }
     }
     
@@ -500,11 +500,11 @@ final class BodyHistoryViewModel {
         }
         var currentDate = Date()
 
-        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: Date())))!
-        var monthAgo = Calendar.current.date(byAdding: .day, value: +1, to: firstDayOfCurrentMonth)!
+        let firstDayOfCurrentMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: currentDate))!
+        var monthAgo = Calendar.current.date(byAdding: .day, value: 0, to: firstDayOfCurrentMonth)!
         
-        var dimentionsInWeek: Double = 0
-        var sumDimensionsInWeek: Double = 0
+        var measurementsInMonth: Double = 0
+        var sumMeasurementsInMonth: Double = 0
         var templeArray = hipMeasurements
         
         guard let lastDate = templeArray.last?.date else { return }
@@ -514,19 +514,19 @@ final class BodyHistoryViewModel {
 
             for i in 0..<templeArray.count {
                 if templeArray[i].date > monthAgo {
-                    dimentionsInWeek += 1
-                    sumDimensionsInWeek += templeArray[i].hip
+                    measurementsInMonth += 1
+                    sumMeasurementsInMonth += templeArray[i].hip
                 }
             }
             
-            for _ in 0...Int(dimentionsInWeek) {
+            for _ in 0...Int(measurementsInMonth) {
                 if templeArray.count != 1 {
                     templeArray.removeFirst()
                 }
             }
             
-            let averageWeekDimension = round(sumDimensionsInWeek / dimentionsInWeek * 10) / 10.0
-            let stringAverageWeekDimension = String(averageWeekDimension)
+            let averageMonthMeasurements = round(sumMeasurementsInMonth / measurementsInMonth * 10) / 10.0
+            let stringAverageMonthMeasurements = String(averageMonthMeasurements)
             
             let formatter = DateFormatter()
             
@@ -534,15 +534,15 @@ final class BodyHistoryViewModel {
             
             let stringDatePeriod = "\(formatter.string(from: monthAgo))"
             
-            if stringAverageWeekDimension != "nan" {
-                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageWeekDimension))
+            if stringAverageMonthMeasurements != "nan" {
+                averageMeasurements.append(.init(datePeriod: stringDatePeriod, averangeDimension: stringAverageMonthMeasurements))
             }
             
             currentDate = Calendar.current.date(byAdding: .month, value: -1, to: monthAgo)!
             
             monthAgo = currentDate
-            dimentionsInWeek = 0
-            sumDimensionsInWeek = 0
+            measurementsInMonth = 0
+            sumMeasurementsInMonth = 0
         }
     }
     

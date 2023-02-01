@@ -186,7 +186,7 @@ final class DataProviderService: DataProviderServiceProtocol {
                 } else {
                     guard let localMeasurements = measurements as? [WeightMeasurement] else { return }
                     completion(localMeasurements.map {
-                        .init(doubleValue: $0.weight.actualWeightValue(), date: $0.preciseDate, isFromHK: false)
+                        .init(doubleValue: $0.weight.actualWeightValue(), date: $0.date, isFromHK: false)
                     })
                 }
             case .failure(let error):
@@ -291,7 +291,6 @@ final class DataProviderService: DataProviderServiceProtocol {
                 completion(.init(doubleValue: 0, date: Date(), isFromHK: false))
                 return
             }
-            print("Weight sample value \(sample.doubleValue)")
             completion(sample)
         }
     }

@@ -214,9 +214,14 @@ final class GoalsViewController: UIViewController {
     private func configureWidgetTitleLabel() {
         var text = ""
         viewModel.isSplitGoalSelected == true ? (text = R.string.localizable.milestoneMilestone() + "\(viewModel.nextStepIndex)") : (text = R.string.localizable.milestoneMyGoal())
+//        widgetTitleLabel.attributedText = NSMutableAttributedString(string: text, attributes: [
+//            NSAttributedString.Key.kern: -0.3,
+//            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
+//            NSAttributedString.Key.foregroundColor: UIColor.weightPrimary
+//        ])
         widgetTitleLabel.attributedText = NSMutableAttributedString(string: text, attributes: [
             NSAttributedString.Key.kern: -0.3,
-            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.font: FontService.shared.localFont(size: 20, bold: false),
             NSAttributedString.Key.foregroundColor: UIColor.weightPrimary
         ])
     }

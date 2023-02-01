@@ -78,7 +78,8 @@ final class PaywallViewController: UIViewController {
     }
     
     private func configureScreenTitleLabel() {
-        screenTitleLabel.font = R.font.promptExtraBold(size: 32)
+//        screenTitleLabel.font = R.font.promptExtraBold(size: 32)
+        screenTitleLabel.font = FontService.shared.localFont(size: 32, bold: true)
         screenTitleLabel.textColor = .promtBigTitle
         screenTitleLabel.numberOfLines = 0
         screenTitleLabel.textAlignment = .center

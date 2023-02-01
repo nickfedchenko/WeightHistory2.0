@@ -42,9 +42,9 @@
 // MARK: - Subscription
 "Subscription.title" = "Контролируйте свой вес с удовольствием";
 "Subscription.benefits.controlWeight" = "Контролируйте свой вес и ИМТ";
-"Subscription.benefits.measure" = "Измерьте свое тело";
-"Subscription.benefits.monitor" = "Отслеживайте прогресс и делитесь результатами";
-"Subscription.benefits.breakGoals" = "Разбейте цели на управляемые этапы";
+"Subscription.benefits.measure" = "Измеряйте свое тело";
+"Subscription.benefits.monitor" = "Отслеживайте прогресс";
+"Subscription.benefits.breakGoals" = "Разбейте вашу цель на этапы";
 "Subscription.period.annually" = "Annually — $24.40 (3 days free)";
 "Subscription.period.perWeekAnnually" = "$0,46 — week / 3 days free";
 "Subscription.period.monthly" = "Monthly — $8.00 (3 days free)";

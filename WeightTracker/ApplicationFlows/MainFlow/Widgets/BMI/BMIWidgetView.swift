@@ -65,9 +65,14 @@ final class BMIWidgetView: UIView {
     
     // MARK: - TITLE LABEL
     private func configureWidgetTitle() {
+//        bmiTitleLabel.attributedText = NSMutableAttributedString(string: R.string.localizable.widgetBmi().uppercased(), attributes: [
+//            NSAttributedString.Key.kern: -0.3,
+//            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
+//            NSAttributedString.Key.foregroundColor: UIColor.bmiMainColor.cgColor
+//        ])
         bmiTitleLabel.attributedText = NSMutableAttributedString(string: R.string.localizable.widgetBmi().uppercased(), attributes: [
             NSAttributedString.Key.kern: -0.3,
-            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.font: FontService.shared.localFont(size: 20, bold: false),
             NSAttributedString.Key.foregroundColor: UIColor.bmiMainColor.cgColor
         ])
     }

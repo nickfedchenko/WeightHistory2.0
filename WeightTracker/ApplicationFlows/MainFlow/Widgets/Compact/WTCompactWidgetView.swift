@@ -68,9 +68,14 @@ final class WTCompactWidgetView: UIView {
     
     private func configureWidgetNameLabel() {
         widgetNameLabel.textAlignment = .left
+//        widgetNameLabel.attributedText = NSMutableAttributedString(string: widgetType.title, attributes: [
+//            NSAttributedString.Key.kern: -0.3,
+//            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
+//            NSAttributedString.Key.foregroundColor: widgetType.color.cgColor
+//        ])
         widgetNameLabel.attributedText = NSMutableAttributedString(string: widgetType.title, attributes: [
             NSAttributedString.Key.kern: -0.3,
-            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
+            NSAttributedString.Key.font: FontService.shared.localFont(size: 20, bold: false),
             NSAttributedString.Key.foregroundColor: widgetType.color.cgColor
         ])
     }
