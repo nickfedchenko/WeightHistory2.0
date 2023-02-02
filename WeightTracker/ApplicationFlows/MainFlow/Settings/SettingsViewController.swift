@@ -161,7 +161,7 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
         
         cell?.reccomendToFriendsCallback = { [weak self] in
             guard let self = self else { return }
-            let link = "www.google.com"                        // TODO: - Добавить ссылку на приложение
+            let link = "https://apps.apple.com/us/app/id1669215471"
             let text = R.string.localizable.settingsReccomendedText()
             let url = URL(string: link)!
             let activity = UIActivityViewController(activityItems: [url, text], applicationActivities: nil)
