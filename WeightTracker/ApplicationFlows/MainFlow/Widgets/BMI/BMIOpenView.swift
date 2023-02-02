@@ -135,11 +135,6 @@ final class BMIOpenView: UIView {
 
     // MARK: - LABELS
     private func configureBmiTitleLabel() {
-//        bmiTitleLabel.attributedText = NSMutableAttributedString(string: R.string.localizable.widgetBmi().uppercased(), attributes: [
-//            NSAttributedString.Key.kern: -0.3,
-//            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
-//            NSAttributedString.Key.foregroundColor: UIColor.bmiMainColor.cgColor
-//        ])
         bmiTitleLabel.attributedText = NSMutableAttributedString(string: R.string.localizable.widgetBmi().uppercased(), attributes: [
             NSAttributedString.Key.kern: -0.3,
             NSAttributedString.Key.font: FontService.shared.localFont(size: 20, bold: false),

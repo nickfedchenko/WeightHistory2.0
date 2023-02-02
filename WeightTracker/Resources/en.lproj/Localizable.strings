@@ -119,6 +119,7 @@
 "Settings.suggestAFeature" = "Suggest a feature";
 "Settings.contactUs" = "A problem? Contact us!";
 "Settings.reccomended" = "Recommend to a friends";
+"Settings.reccomended.text" = "Wheight Tracker - Record your weight, BMI, body measurements and reach your goals!";
 
 // MARK: - Periods
 "Periods.daily" = "Daily";

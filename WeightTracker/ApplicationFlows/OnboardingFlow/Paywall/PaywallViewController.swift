@@ -21,8 +21,8 @@ final class PaywallViewController: UIViewController {
     private var startButton = ActionButton(type: .system)
     private var lockImageView = UIImageView()
     private var cancelLabel = UILabel()
-    private var privacyButton = UIButton(type: .system)
-    private var termsButton = UIButton(type: .system)
+    private var privacyButton = UILabel()
+    private var termsButton = UILabel()
     private var viewForCancelLabel = UIView()
     private var paymentCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -77,30 +77,35 @@ final class PaywallViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    private func configureScreenTitleLabel() {
-//        screenTitleLabel.font = R.font.promptExtraBold(size: 32)
-        screenTitleLabel.font = FontService.shared.localFont(size: 32, bold: true)
-        screenTitleLabel.textColor = .promtBigTitle
-        screenTitleLabel.numberOfLines = 0
-        screenTitleLabel.textAlignment = .center
-        screenTitleLabel.attributedText = NSMutableAttributedString(
-            string: R.string.localizable.subscriptionBenefitsControlWeight(),
-            attributes: [NSAttributedString.Key.kern: -0.3]
-        )
-    }
-    
+    // MARK: - PRIVACY BUTTON
     private func configurePrivacyButton() {
         let attrTitle = NSMutableAttributedString(
             string: R.string.localizable.subscriptionPrivacy(),
             attributes: [
                 NSAttributedString.Key.kern: 0.12,
                 NSAttributedString.Key.font: R.font.openSansMedium(size: Locale.isLanguageRus ? 10 : 12) ?? UIFont.systemFont(ofSize: 22),
-                NSAttributedString.Key.foregroundColor: UIColor.basicDark
+                NSAttributedString.Key.foregroundColor: UIColor.basicDark,
             ]
         )
-        privacyButton.setAttributedTitle(attrTitle, for: .normal)
+        privacyButton.attributedText = attrTitle
+        privacyButton.numberOfLines = 0
+        privacyButton.isUserInteractionEnabled = true
+        configurePrivacyTapGesture()
     }
     
+    private func configurePrivacyTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onPrivacyPressed))
+        tapGesture.cancelsTouchesInView = false
+        privacyButton.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func onPrivacyPressed() {
+        if let url = URL(string: "https://docs.google.com/document/d/13OYuleJmzYPWYWb_ynSS-faqfBPaz45A-xsDpkRr-vs/edit") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    // MARK: - TERMS BUTTON
     private func configureTermsButton() {
         let attrTitle = NSMutableAttributedString(
             string: R.string.localizable.subscriptionTerms(),
@@ -110,7 +115,35 @@ final class PaywallViewController: UIViewController {
                 NSAttributedString.Key.foregroundColor: UIColor.basicDark
             ]
         )
-        termsButton.setAttributedTitle(attrTitle, for: .normal)
+        termsButton.attributedText = attrTitle
+        termsButton.textAlignment = .right
+        termsButton.numberOfLines = 0
+        termsButton.isUserInteractionEnabled = true
+        configureTermsTapGesture()
+    }
+    
+    private func configureTermsTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTermsPressed))
+        tapGesture.cancelsTouchesInView = false
+        termsButton.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func onTermsPressed() {
+        if let url = URL(string: "https://docs.google.com/document/d/13jBN6nyTQtZUgU5F4wkWmTrQ0qvQEfEH2ZCHO7QMn6k/edit") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    // MARK: - LABELS
+    private func configureScreenTitleLabel() {
+        screenTitleLabel.font = FontService.shared.localFont(size: 32, bold: true)
+        screenTitleLabel.textColor = .promtBigTitle
+        screenTitleLabel.numberOfLines = 0
+        screenTitleLabel.textAlignment = .center
+        screenTitleLabel.attributedText = NSMutableAttributedString(
+            string: R.string.localizable.subscriptionBenefitsControlWeight(),
+            attributes: [NSAttributedString.Key.kern: -0.3]
+        )
     }
     
     private func configureCancelLabel() {
@@ -125,6 +158,7 @@ final class PaywallViewController: UIViewController {
         cancelLabel.attributedText = attrText
     }
     
+    // MARK: - IMAGES
     private func configureScreenImageView() {
         screenImage.image = R.image.subscriptionImage()
         screenImage.contentMode = .scaleAspectFit
@@ -316,18 +350,21 @@ extension PaywallViewController {
         
         privacyButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(32)
+            make.bottom.equalToSuperview().inset(10)
+            make.top.equalTo(startButton.snp.bottom).inset(-42)
+            make.width.equalTo(120)
         }
         
         termsButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(32)
+            make.bottom.equalToSuperview().inset(10)
+            make.top.equalTo(startButton.snp.bottom).inset(-42)
+            make.width.equalTo(120)
         }
         
         viewForCancelLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(startButton.snp.bottom).inset(-20)
-            make.bottom.equalToSuperview().inset(50)
+            make.top.equalTo(startButton.snp.bottom).inset(-10)
         }
         
         lockImageView.snp.makeConstraints { make in

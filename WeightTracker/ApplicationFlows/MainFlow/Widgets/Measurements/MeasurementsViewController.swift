@@ -88,7 +88,6 @@ final class MeasurementsViewController: UIViewController {
     // MARK: - LABELS
     private func configureMeasurementTodayLabel() {
         configureMeasurementTodayLabelText()
-//        measurementTodayLabel.font = R.font.promptSemiBold(size: 20)
         measurementTodayLabel.font = FontService.shared.localFont(size: 20, bold: false)
         measurementTodayLabel.textColor = viewType.color
     }
@@ -171,7 +170,6 @@ final class MeasurementsViewController: UIViewController {
         measurementTextField.keyboardType = .decimalPad
         measurementTextField.becomeFirstResponder()
         measurementTextField.delegate = self
-//        measurementTextField.font = R.font.promptSemiBold(size: 22)
         measurementTextField.font = FontService.shared.localFont(size: 22, bold: false)
         configureTextFieldShadow()
         getMeasurement()

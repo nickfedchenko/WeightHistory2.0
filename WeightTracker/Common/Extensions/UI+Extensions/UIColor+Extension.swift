@@ -9,7 +9,7 @@ import UIKit
 
 extension UIColor {
     
-    //MARK: - Button colors
+    // MARK: - Button colors
     static let buttonBlueColor = UIColor(hex: "#1698B8")
     static let buttonWhiteColor = UIColor.white
     static let buttonGrayColor = UIColor(hex: "#D2D2D2")
@@ -36,8 +36,6 @@ extension UIColor {
     // MARK: - CHART
     static let chartPeriodSelectorShadowColor = UIColor(hex: "C38D61")
     static let chartPeriodSelectorBorderColor = UIColor(hex: "A78A74")
-
-
     
     static let weightPrimary = UIColor(hex: "#1698B8")
     static let mainBackground = UIColor(hex: "#FEF4EC")
@@ -103,12 +101,6 @@ extension UIColor {
     static let redCircleProgressLineColor = UIColor(hex: "#E89F6B")
     static let greenCircleProgressLineColor = UIColor(hex: "#A6DD6F")
     static let pickMileShadowColor = UIColor(hex: "#C38D617D")
-    
-    // ChartView colors
-    static let chartLineColor = UIColor(hex: "#FDD9BC")
-    static let chartDateColor = UIColor(hex: "#A78A74")
-    static let chartSecondGradientColor = UIColor(hex: "#F15626", alpha: 0.43)
-    static let chartThirdGradientColor = UIColor(hex: "#F15626", alpha: 0.01)
     
     // Settings colors
     static let settingsTitleColor = UIColor(hex: "#9B7354")

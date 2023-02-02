@@ -99,6 +99,21 @@ final class WTChartViewModel {
         case chest = "Chest"
         case waist = "Waist"
         case hip = "Hip"
+
+        var title: String {
+            switch self {
+            case .weight:
+                return R.string.localizable.widgetWeight()
+            case .bmi:
+                return R.string.localizable.widgetBmi()
+            case .chest:
+                return R.string.localizable.widgetChest()
+            case .waist:
+                return R.string.localizable.widgetWaist()
+            case .hip:
+                return R.string.localizable.widgetHip()
+            }
+        }
         
         var dominantColor: UIColor {
             switch self {

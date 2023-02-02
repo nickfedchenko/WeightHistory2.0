@@ -91,7 +91,7 @@ final class MainStageViewModel {
         return isUserMale
     }
     
-    //MARK: - CALCULATE BMI
+    // MARK: - CALCULATE BMI
     private func setBMIDataForChart(from weightMeasurements: [MeasurementSample]) -> [BMIArrayModel] {
         var bmiArray: [BMIArrayModel] = []
         
@@ -141,7 +141,7 @@ final class MainStageViewModel {
         userLengthUnit = userSettingsService.getUserLenghtUnit()
     }
     
-    //MARK: - FETCHING LAST MEASUREMENT FOR - HIP WAIST CHEST
+    // MARK: - FETCHING LAST MEASUREMENT FOR - HIP WAIST CHEST
     func getLastMeasurement(for widgetType: MeasurementTypes) -> String {
         var lastMeasurement: Double = 0
         var lastMeasurementString = ""
@@ -205,7 +205,7 @@ final class MainStageViewModel {
         amplitude.logEvent("fastWeightAddTap")
     }
     
-    //MARK: - WIDGETS SIZE & INDENTS
+    // MARK: - WIDGETS SIZE & INDENTS
     private func getSideIndent() {
         sideIndent = widgetSizeService.sideIndent
     }
@@ -230,5 +230,4 @@ final class MainStageViewModel {
         widgetSizeService.type = .large
         largeWidgetHeight = widgetSizeService.height
     }
-    
 }

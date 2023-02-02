@@ -148,7 +148,7 @@ final class GoalsViewController: UIViewController {
         }
     }
     
-    //MARK: - Configure labels
+    // MARK: - Configure labels
     private func configureLabels() {
         configureOneMileLabel()
         confgiureOtherLabels()
@@ -214,11 +214,6 @@ final class GoalsViewController: UIViewController {
     private func configureWidgetTitleLabel() {
         var text = ""
         viewModel.isSplitGoalSelected == true ? (text = R.string.localizable.milestoneMilestone() + "\(viewModel.nextStepIndex)") : (text = R.string.localizable.milestoneMyGoal())
-//        widgetTitleLabel.attributedText = NSMutableAttributedString(string: text, attributes: [
-//            NSAttributedString.Key.kern: -0.3,
-//            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
-//            NSAttributedString.Key.foregroundColor: UIColor.weightPrimary
-//        ])
         widgetTitleLabel.attributedText = NSMutableAttributedString(string: text, attributes: [
             NSAttributedString.Key.kern: -0.3,
             NSAttributedString.Key.font: FontService.shared.localFont(size: 20, bold: false),
@@ -391,9 +386,7 @@ extension GoalsViewController: UITableViewDataSource, UITableViewDelegate {
         if viewModel.isDeviceOld && viewModel.nextStepIndex > 5 {
             tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
-        
     }
-    
 }
 
 // MARK: - Setup constraints
@@ -430,8 +423,7 @@ extension GoalsViewController {
         }
                 
         splitMyGoalLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(30)
-            make.trailing.equalTo(splitSwitch.snp.leading).inset(-8)
+            make.trailing.equalTo(splitSwitch.snp.leading).inset(-10)
         }
         
         intoLabel.snp.makeConstraints { make in
@@ -441,25 +433,24 @@ extension GoalsViewController {
         
         goalsLabel.snp.makeConstraints { make in
             make.centerY.equalTo(splitMyGoalLabel)
-            make.leading.equalTo(goalsSegmentControl.snp.trailing).inset(-8)
+            make.leading.equalTo(goalsSegmentControl.snp.trailing).inset(-10)
         }
         
         splitSwitch.snp.makeConstraints { make in
             make.centerY.equalTo(splitMyGoalLabel)
-            make.trailing.equalTo(intoLabel.snp.leading).inset(-8)
+            make.trailing.equalTo(intoLabel.snp.leading).inset(-10)
         }
         
         goalsSegmentControl.snp.makeConstraints { make in
             make.height.equalTo(32)
             make.width.equalTo(62)
             make.centerY.equalTo(splitMyGoalLabel)
-            make.leading.equalTo(intoLabel.snp.trailing).inset(-8)
+            make.leading.equalTo(intoLabel.snp.trailing).inset(-10)
         }
         
         goalsLineProgressView.snp.makeConstraints { make in
             make.height.equalTo(8)
-            make.leading.equalTo(splitMyGoalLabel.snp.leading)
-            make.trailing.equalTo(goalsLabel.snp.trailing)
+            make.leading.trailing.equalToSuperview().inset(28)
             make.bottom.equalTo(goalsSegmentControl.snp.top).inset(-18)
         }
         
@@ -507,7 +498,7 @@ extension GoalsViewController {
         
         overallLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(39)
-            make.top.equalTo(closeButton.snp.bottom).inset(-45)
+            make.centerY.equalTo(goalsCircleProgressView.snp.centerY)
             make.width.equalTo(65)
         }
         
@@ -539,4 +530,3 @@ extension GoalsViewController {
         }
     }
 }
-

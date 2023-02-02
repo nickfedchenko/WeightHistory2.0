@@ -36,7 +36,7 @@ final class OnboardingViewModel {
         UIDevice.screenType == .less ? -20 : -50
     }
     
-    //MARK: - Saving user data
+    // MARK: - Saving user data
     func saveUserGender(value: Int16) {
         dbService.saveUserGender(value: value)
         amplitude.logEvent("onb_1_complete", withEventProperties: ["sex": (isUserMale ? "male" : "female")])

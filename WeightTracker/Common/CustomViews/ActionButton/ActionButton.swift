@@ -73,7 +73,6 @@ final class ActionButton: UIButton {
         backgroundColor = .clear
         setTitleColor(.weightPrimary, for: .normal)
         setTitleColor(.white, for: .highlighted)
-//        titleLabel?.font = R.font.promptBold(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20)
         titleLabel?.font = FontService.shared.localFont(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20, bold: true)
         isEnabled = true
 
@@ -95,7 +94,6 @@ final class ActionButton: UIButton {
         isUserInteractionEnabled = false
         backgroundColor = .clear
         setTitleColor(.white, for: .normal)
-//        titleLabel?.font = R.font.promptBold(size: 20)
         titleLabel?.font = FontService.shared.localFont(size: 20, bold: true)
 
         clipsToBounds = true
@@ -110,7 +108,6 @@ final class ActionButton: UIButton {
         isUserInteractionEnabled = false
         backgroundColor = .clear
         setTitleColor(.white, for: .normal)
-//        titleLabel?.font = R.font.promptBold(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20)
         titleLabel?.font = FontService.shared.localFont(size: isForSmallState ? Locale.isLanguageRus ? 14 : 20 : 20, bold: true)
 
         clipsToBounds = true
@@ -124,7 +121,6 @@ final class ActionButton: UIButton {
         isUserInteractionEnabled = true
         backgroundColor = .clear
         setTitleColor(.white, for: .normal)
-//        titleLabel?.font = R.font.promptSemiBold(size: 20)
         titleLabel?.font = FontService.shared.localFont(size: 20, bold: false)
         isEnabled = true
 
@@ -143,43 +139,5 @@ final class ActionButton: UIButton {
         layer.shadowRadius = 12
         layer.shadowOpacity = 0.49
         layer.masksToBounds = false
-    }
-    
-    // MARK: - Private methods
-    private func drawShadows() {
-        let path =  UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
-        let firstShadowLayer = CAShapeLayer()
-        let secondShadowLayer = CAShapeLayer()
-        let thirdShadowLayer = CAShapeLayer()
-        
-        firstShadowLayer.shadowPath = path
-//        firstShadowLayer.backgroundColor = UIColor.weightPrimary.cgColor
-//        firstShadowLayer.cornerRadius = 16
-//        firstShadowLayer.cornerCurve = .continuous
-        firstShadowLayer.shadowColor = UIColor.buttonShadowColor.cgColor
-        firstShadowLayer.shadowOffset = CGSize(width: 0, height: 0.8)
-        firstShadowLayer.shadowRadius = 2.06
-        firstShadowLayer.shadowOpacity = 0.1
-        firstShadowLayer.masksToBounds = false
-        
-        secondShadowLayer.shadowPath = path
-        secondShadowLayer.shadowColor = UIColor.buttonShadowColor.cgColor
-        secondShadowLayer.shadowOffset = CGSize(width: 0, height: 2.68)
-        secondShadowLayer.shadowRadius = 6.92
-        secondShadowLayer.shadowOpacity = 0.2
-        secondShadowLayer.masksToBounds = false
-
-
-        thirdShadowLayer.shadowPath = path
-        thirdShadowLayer.shadowColor = UIColor.buttonShadowColor.cgColor
-        thirdShadowLayer.shadowOffset = CGSize(width: 0, height: 12)
-        thirdShadowLayer.shadowRadius = 31
-        thirdShadowLayer.shadowOpacity = 0.49
-        thirdShadowLayer.masksToBounds = false
-
-        
-        layer.insertSublayer(firstShadowLayer, at: 0)
-        layer.insertSublayer(secondShadowLayer, at: 0)
-        layer.insertSublayer(thirdShadowLayer, at: 0)
     }
 }

@@ -59,7 +59,7 @@ final class MainStageViewController: UIViewController {
     
     // MARK: - Configure UI
     private func configureUI() {
-        viewModel.isDeviceOld == true ? addSubbviewsWithScrollView() : addSubViews()
+        viewModel.isDeviceOld == true ? addSubViewsWithScrollView() : addSubViews()
         configureView()
         configureAvatarImageView()
         setupConstraints()
@@ -81,7 +81,7 @@ final class MainStageViewController: UIViewController {
         widgetsViewContainer.addSubview(goalsWidgetView)
     }
     
-    private func addSubbviewsWithScrollView() {
+    private func addSubViewsWithScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(chartViewContainer)
@@ -128,7 +128,7 @@ final class MainStageViewController: UIViewController {
         setAvatarImage()
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.layer.cornerCurve = .continuous
-        avatarImageView.layer.shadowColor = UIColor.chartDateColor.cgColor
+        avatarImageView.layer.shadowColor = UIColor.avatarBorderColor.cgColor
         avatarImageView.layer.shadowOffset = CGSize(width: 0, height: 12)
         avatarImageView.layer.shadowRadius = 31
         avatarImageView.layer.shadowOpacity = 0.20
@@ -630,11 +630,10 @@ extension MainStageViewController {
 // MARK: - Paywall
 extension MainStageViewController {
     func showPaywallConditionally() -> Bool {
-//        guard !Apphud.hasActiveSubscription() else { return false }
-//        let paywall = PaywallViewController()
-//        paywall.modalPresentationStyle = .fullScreen
-//        present(paywall, animated: true)
-//        return true
-        return false
+        guard !Apphud.hasActiveSubscription() else { return false }
+        let paywall = PaywallViewController()
+        paywall.modalPresentationStyle = .fullScreen
+        present(paywall, animated: true)
+        return true
     }
 }

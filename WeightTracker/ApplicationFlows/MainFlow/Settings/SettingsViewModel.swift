@@ -96,8 +96,10 @@ final class SettingsViewModel {
         case .userGender:
             if value == R.string.localizable.onboardingGenderMale() {
                 dbService.saveUserGender(value: 1)
+                userSettingsService.isUserMale = true
             } else {
                 dbService.saveUserGender(value: 0)
+                userSettingsService.isUserMale = false
             }
         case .units:
             if value.contains(R.string.localizable.unitsKg()) {
@@ -114,7 +116,7 @@ final class SettingsViewModel {
         }
     }
     
-    //MARK: - Private methods
+    // MARK: - Private methods
     private func setSectionTitles() {
         settingsTableSectionTitles = [
             R.string.localizable.settingsProfileSectionTitle(),
@@ -192,8 +194,7 @@ final class SettingsViewModel {
         measurementResult = Double(measurementStringResult.replaceDot()) ?? 0
     }
     
-    
-    
+    // MARK: - VALIDATION
     func isMeasurementResultValid(for type: SettingsType) -> Validation {
         
         if measurementStringResult.last == "." &&  measurementStringResult.last == "," {
@@ -245,6 +246,7 @@ final class SettingsViewModel {
         }
     }
     
+    // MARK: - USER SETTING SERVICE METHODS
     private func getSettingsSwitchesState() {
         isAppleHealthOn = userSettingsService.getIsAppleHealthOn()
         isHapticFeedbackOn = userSettingsService.getIsHapticFeedbackOn()

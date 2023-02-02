@@ -11,7 +11,7 @@ final class ReviewCollectionViewCell: UICollectionViewCell {
     
     static let identifier = String(describing: ReviewCollectionViewCell.self)
     
-    //MARK: - Property list
+    // MARK: - Property list
     private var containerView = UIView()
     private var reviewLabel = UILabel()
     private var startsImageView = UIImageView()
@@ -28,14 +28,14 @@ final class ReviewCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Public methods
+    // MARK: - Public methods
     func configure(reviewText: String, userPhoto: UIImage, userName: String) {
         setupUserNamelabel(name: userName)
         setupReviewLabel(text: reviewText)
         setupUserPhoto(photo: userPhoto)
     }
     
-    //MARK: - Private methods
+    // MARK: - Private methods
     private func configureUI() {
         addSubViews()
         setupConstraints()
@@ -93,7 +93,7 @@ final class ReviewCollectionViewCell: UICollectionViewCell {
     }
     
 
-    //MARK: - Other private methods
+    // MARK: - Other private methods
     private func setupUserNamelabel(name: String) {
         userNameLabel.text = name
     }
@@ -143,5 +143,3 @@ extension ReviewCollectionViewCell {
         }
     }
 }
-
-

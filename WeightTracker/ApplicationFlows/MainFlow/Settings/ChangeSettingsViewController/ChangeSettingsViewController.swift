@@ -84,7 +84,6 @@ final class ChangeSettingsViewController: UIViewController {
     }
     
     private func configureTitleLabel() {
-//        titleLabel.font = R.font.promptSemiBold(size: 20)
         titleLabel.font = FontService.shared.localFont(size: 20, bold: false)
         titleLabel.textColor = .weightPrimary
     }
@@ -115,7 +114,6 @@ final class ChangeSettingsViewController: UIViewController {
         changeSettingsTextField.keyboardType = .decimalPad
         changeSettingsTextField.becomeFirstResponder()
         changeSettingsTextField.delegate = self
-//        changeSettingsTextField.font = R.font.promptSemiBold(size: 22)
         changeSettingsTextField.font = FontService.shared.localFont(size: 22, bold: false)
         configureTextFieldShadow()
         getMeasurement()

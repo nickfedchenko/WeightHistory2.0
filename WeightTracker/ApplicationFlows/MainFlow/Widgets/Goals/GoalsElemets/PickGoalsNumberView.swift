@@ -90,7 +90,6 @@ final class PickGoalsNumberView: UIView {
     private func configureDoneButton() {
         doneButton.setTitle(R.string.localizable.buttonsDone(), for: .normal)
         doneButton.backgroundColor = .weightPrimary
-//        doneButton.titleLabel?.font = R.font.promptSemiBold(size: 20)
         doneButton.titleLabel?.font = FontService.shared.localFont(size: 20, bold: false)
         doneButton.tintColor = .white
         doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)

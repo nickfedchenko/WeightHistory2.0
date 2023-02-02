@@ -166,8 +166,13 @@ final class BodyHistoryViewModel {
             let formatter = DateFormatter()
             let secondFormatter = DateFormatter()
             
-            formatter.dateFormat = "MMM d"
-            secondFormatter.dateFormat = "MMM d, yyyy"
+            if Locale.isLanguageRus {
+                formatter.dateFormat = "d MMM"
+                secondFormatter.dateFormat = "d MMM, yyyy"
+            } else {
+                formatter.dateFormat = "MMM d"
+                secondFormatter.dateFormat = "MMM d, yyyy"
+            }
             
             let stringDatePeriod = "\(formatter.string(from: weekAgo))" + " - " + "\(secondFormatter.string(from: currentDate))"
             
@@ -216,8 +221,13 @@ final class BodyHistoryViewModel {
             let formatter = DateFormatter()
             let secondFormatter = DateFormatter()
             
-            formatter.dateFormat = "MMM d"
-            secondFormatter.dateFormat = "MMM d, yyyy"
+            if Locale.isLanguageRus {
+                formatter.dateFormat = "d MMM"
+                secondFormatter.dateFormat = "d MMM, yyyy"
+            } else {
+                formatter.dateFormat = "MMM d"
+                secondFormatter.dateFormat = "MMM d, yyyy"
+            }
             
             let stringDatePeriod = "\(formatter.string(from: weekAgo))" + " - " + "\(secondFormatter.string(from: currentDate))"
             
@@ -266,8 +276,13 @@ final class BodyHistoryViewModel {
             let formatter = DateFormatter()
             let secondFormatter = DateFormatter()
             
-            formatter.dateFormat = "MMM d"
-            secondFormatter.dateFormat = "MMM d, yyyy"
+            if Locale.isLanguageRus {
+                formatter.dateFormat = "d MMM"
+                secondFormatter.dateFormat = "d MMM, yyyy"
+            } else {
+                formatter.dateFormat = "MMM d"
+                secondFormatter.dateFormat = "MMM d, yyyy"
+            }
             
             let stringDatePeriod = "\(formatter.string(from: weekAgo))" + " - " + "\(secondFormatter.string(from: currentDate))"
             
@@ -316,8 +331,13 @@ final class BodyHistoryViewModel {
             let formatter = DateFormatter()
             let secondFormatter = DateFormatter()
             
-            formatter.dateFormat = "MMM d"
-            secondFormatter.dateFormat = "MMM d, yyyy"
+            if Locale.isLanguageRus {
+                formatter.dateFormat = "d MMM"
+                secondFormatter.dateFormat = "d MMM, yyyy"
+            } else {
+                formatter.dateFormat = "MMM d"
+                secondFormatter.dateFormat = "MMM d, yyyy"
+            }
             
             let stringDatePeriod = "\(formatter.string(from: weekAgo))" + " - " + "\(secondFormatter.string(from: currentDate))"
             

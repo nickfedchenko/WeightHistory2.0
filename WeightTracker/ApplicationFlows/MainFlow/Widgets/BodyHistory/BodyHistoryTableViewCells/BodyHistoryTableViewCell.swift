@@ -70,10 +70,10 @@ final class BodyHistoryTableViewCell: UITableViewCell {
         var string = ""
         
         switch type {
-        case .chest:    string = ("\(measurement)")
-        case .waist:    string = ("\(measurement)")
-        case .hip:      string = ("\(measurement)")
-        case .weight:   string = ("\(String(format: "%.1f", measurement))")
+        case .chest:    string = ("\(measurement) \(lengthUnit)")
+        case .waist:    string = ("\(measurement) \(lengthUnit)")
+        case .hip:      string = ("\(measurement) \(lengthUnit)")
+        case .weight:   string = ("\(String(format: "%.1f", measurement)) \(widthUnit)")
         case .bmi:      return
         }
         
@@ -91,10 +91,10 @@ final class BodyHistoryTableViewCell: UITableViewCell {
         var string = ""
         
         switch type {
-        case .chest:    string = ("\(measurement)")
-        case .waist:    string = ("\(measurement)")
-        case .hip:      string = ("\(measurement)")
-        case .weight:   string = ("\(measurement)")
+        case .chest:    string = ("\(measurement) \(lengthUnit)")
+        case .waist:    string = ("\(measurement) \(lengthUnit)")
+        case .hip:      string = ("\(measurement) \(lengthUnit)")
+        case .weight:   string = ("\(measurement) \(widthUnit)")
         case .bmi:      return
         }
         
@@ -110,7 +110,11 @@ final class BodyHistoryTableViewCell: UITableViewCell {
     private func configureDateLabel(for type: MeasurementTypes, with date: Date) {
         dateLabel.textAlignment = .left
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
+        if Locale.isLanguageRus {
+            formatter.dateFormat = "d MMMM"
+        } else {
+            formatter.dateFormat = "MMM d"
+        }
         let formDate = formatter.string(from: date)
         dateLabel.attributedText = NSMutableAttributedString(
             string: formDate,

@@ -112,16 +112,6 @@ final class BMIViewModel {
     }
     
     private func getUserGender() {
-        // TODO: - Не забыть почистить
-//        dbService.fetchDomainUserInfo { result in
-//            switch result {
-//            case .success(let success):
-//                let gender = success.userGender
-//                gender == 1 ? (isMale = true) : (isMale = false)
-//            case .failure(let failure):
-//                debugPrint(failure)
-//            }
-//        }
         isMale = userSettingsService.isUserMale
     }
     
@@ -147,9 +137,6 @@ final class BMIViewModel {
         let lowestNormalBmi: Double = 18.5
         let highestNormalBmi: Double = 24.99
         var userWeight = userLastWeight
-//        if !isMetric {
-//           userWeight = weightFromLbsToKg(from: userWeight)
-//        }
         
         userLowestNormalWeight = Double(round(10 * (userWeight * lowestNormalBmi / bmi)) / 10)
         userHighestNormalWeight = Double(round(10 * (userWeight * highestNormalBmi / bmi)) / 10)
@@ -211,15 +198,6 @@ final class BMIViewModel {
                 upToNormal = 0
             }
         } else {
-//            let lowNormLbs = weightFromKgToLbs(from: userLowestNormalWeight)
-//            let highNormLbs = weightFromKgToLbs(from: userHighestNormalWeight)
-//            if userWeight > highNormLbs {
-//                upToNormal = highNormLbs - userWeight
-//            } else if userLastWeight < lowNormLbs {
-//                upToNormal = lowNormLbs - userWeight
-//            } else {
-//                upToNormal = 0
-//            }
             if userWeight > userHighestNormalWeight {
                 upToNormal = userHighestNormalWeight - userWeight
             } else if userLastWeight < userLowestNormalWeight {

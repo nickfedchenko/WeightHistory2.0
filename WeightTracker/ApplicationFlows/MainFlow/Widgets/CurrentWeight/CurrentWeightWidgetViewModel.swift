@@ -11,14 +11,17 @@ final class CurrentWeightWidgetViewModel {
     
     // MARK: - Property list
     private let dbService = CoreDataService.shared
-    private let widgetSize = WidgetSizeService(type: .medium)
-    let facade: DataProviderServiceProtocol = DataProviderService.shared
+    private let widgetSizeService = WidgetSizeService(type: .medium)
+    private let facade: DataProviderServiceProtocol = DataProviderService.shared
     
     // MARK: - Public methods
     func getDateLabel(completion: @escaping (String) -> Void) {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        
+        if Locale.isLanguageRus {
+            formatter.dateFormat = "d MMMM"
+        } else {
+            formatter.dateFormat = "MMM d"
+        }
         facade.fetchLastWeight { sample in
             let dateString = formatter.string(from: sample.date)
             completion(dateString)
@@ -33,15 +36,14 @@ final class CurrentWeightWidgetViewModel {
             } else {
                 completion(weightString)
             }
-            print("weight string is \(weightString)")
         }
     }
     
     func getWidgetHeight() -> CGFloat {
-        return widgetSize.height
+        return widgetSizeService.height
     }
     
     func getWidgetWidth() -> CGFloat {
-        return widgetSize.widgetWidth
+        return widgetSizeService.widgetWidth
     }
 }

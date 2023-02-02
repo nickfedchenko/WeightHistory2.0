@@ -44,7 +44,7 @@
 "Subscription.benefits.controlWeight" = "Контролируйте свой вес и ИМТ";
 "Subscription.benefits.measure" = "Измеряйте свое тело";
 "Subscription.benefits.monitor" = "Отслеживайте прогресс";
-"Subscription.benefits.breakGoals" = "Разбейте вашу цель на этапы";
+"Subscription.benefits.breakGoals" = "Разбевайте вашу цель на этапы";
 "Subscription.period.annually" = "Annually — $24.40 (3 days free)";
 "Subscription.period.perWeekAnnually" = "$0,46 — week / 3 days free";
 "Subscription.period.monthly" = "Monthly — $8.00 (3 days free)";
@@ -73,8 +73,8 @@
 "Measurement.history.nothingLogget" = "Пока ничего не отмечено";
 
 // MARK: - BMI Widget
-"BmiWidget.verySevUnderweigth" = "Очень сильно недостаточный вес";
-"BmiWidget.sevUnderweigth" = "Сильно недостаточный вес";
+"BmiWidget.verySevUnderweigth" = "Выраженный дефицит";
+"BmiWidget.sevUnderweigth" = "Дефицит массы тела";
 "BmiWidget.underweight" = "Недостаточный вес";
 "BmiWidget.normalWeight" = "Нормальный вес";
 "BmiWidget.overWeight" = "Избыток веса";
@@ -87,19 +87,19 @@
 "BmiWidget.impossibleToCalc" = "Невозможно рассчитать";
 
 // MARK: Milestone widget
-"Milestone.oneMile" = "1 milestone = ";
+"Milestone.oneMile" = "1 этап = ";
 "Milestone.mileStartWeight" = "Начальный вес";
 "Milestone.mileGoaltWeight" = "Целевой вес";
-"Milestone.milestone" = "Milestone ";
-"Milestone.splitMyGoal" = "Разделить мою цель";
+"Milestone.milestone" = "Этап ";
+"Milestone.splitMyGoal" = "Разбить";
 "Milestone.into" = "на";
-"Milestone.milestones" = "milestones";
+"Milestone.milestones" = "этапов";
 "Milestone.start" = "Старт:";
 "Milestone.now" = "Сейчас:";
 "Milestone.goal" = "Цель:";
-"Milestone.complete" = "Завершить";
+"Milestone.complete" = "выполнено";
 "Milestone.toGo" = "осталось";
-"Milestone.completeOverall" = "выполнено в целом";
+"Milestone.completeOverall" = "всего";
 "Milestone.of" = " из ";
 "Milestone.myGoal" = "Моя цель";
 "Milestone.miniGoalSegments" = " сегмента(ов) мини-целей";
@@ -115,15 +115,16 @@
 "Settings.units" = "Измерения";
 "Settings.healthSync" = "Синхронизация с Apple Health";
 "Settings.haptic" = "Виброотклик";
-"Settings.doYouLikeApp" = "Вам нравится приложение? Расскажи нам!";
-"Settings.suggestAFeature" = "Предложить улучшение";
+"Settings.doYouLikeApp" = "Оцените наше приложение!";
+"Settings.suggestAFeature" = "Предложить улучшения";
 "Settings.contactUs" = "Проблема? Свяжитесь с нами";
 "Settings.reccomended" = "Порекоммендуйте друзьям";
+"Settings.reccomended.text" = "Wheight Tracker - Записывайте свой вес, ИМТ, измерения тела и достигайте своих целей!";
 
 // MARK: - Periods
-"Periods.daily" = "Ежедневно";
-"Periods.weekly" = "Каждую неделю";
-"Periods.monthly" = "Месячно";
+"Periods.daily" = "Дни";
+"Periods.weekly" = "Недели";
+"Periods.monthly" = "Месяцы";
 "Periods.week" = "Неделя";
 "Periods.month" = "Месяц";
 "Periods.twoMonths" = "2 месяца";

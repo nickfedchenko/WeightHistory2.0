@@ -71,7 +71,7 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
         setAvatarImage()
         avatarImageView.layer.cornerRadius = 16
         avatarImageView.layer.cornerCurve = .continuous
-        avatarImageView.layer.shadowColor = UIColor.chartDateColor.cgColor
+        avatarImageView.layer.shadowColor = UIColor.avatarBorderColor.cgColor
         avatarImageView.layer.shadowOffset = CGSize(width: 0, height: 12)
         avatarImageView.layer.shadowRadius = 31
         avatarImageView.layer.shadowOpacity = 0.20
@@ -162,7 +162,7 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
         cell?.reccomendToFriendsCallback = { [weak self] in
             guard let self = self else { return }
             let link = "www.google.com"                        // TODO: - Добавить ссылку на приложение
-            let text = " добавить текст "                      // TODO: - Добавить текст
+            let text = R.string.localizable.settingsReccomendedText()
             let url = URL(string: link)!
             let activity = UIActivityViewController(activityItems: [url, text], applicationActivities: nil)
             self.present(activity, animated: true)
@@ -181,7 +181,8 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
             if MFMailComposeViewController.canSendMail() {
                 let mailVC = MFMailComposeViewController()
                 mailVC.mailComposeDelegate = self
-                mailVC.setToRecipients(["  email!   "])      // TODO: - Добавить нужный имейл
+                mailVC.setToRecipients(["weight.trackerrr@gmail.com"])
+                mailVC.setSubject("Weight Tracker iOS Application")
                 self.present(mailVC, animated: true)
             } else {
                 debugPrint("Cant send mail")
@@ -208,7 +209,6 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
             self.viewModel.isAppleHealthOn = isSelected
         }
         
-        
         return cell ?? UITableViewCell()
     }
     
@@ -217,7 +217,6 @@ final class SettingsViewController: UIViewController, UITableViewDelegate, UITab
         let titleForSection = UILabel()
         titleForSection.attributedText = NSMutableAttributedString(string: viewModel.settingsTableSectionTitles[section], attributes: [
             NSAttributedString.Key.kern: -0.3,
-//            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
             NSAttributedString.Key.font: FontService.shared.localFont(size: 20, bold: false),
             NSAttributedString.Key.foregroundColor: UIColor.weightPrimary
         ])

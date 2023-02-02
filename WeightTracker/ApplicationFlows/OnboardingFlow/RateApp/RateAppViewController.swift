@@ -20,7 +20,7 @@ final class RateAppViewController: UIViewController {
     
     private var viewModel = RateAppViewModel()
         
-    //MARK: - Overrides
+    // MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()

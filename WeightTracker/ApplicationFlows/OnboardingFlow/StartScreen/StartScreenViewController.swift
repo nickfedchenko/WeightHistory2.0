@@ -50,7 +50,11 @@ final class StartScreenViewController: UIViewController {
         appNameLabel.numberOfLines = 0
         appNameLabel.lineBreakMode = .byWordWrapping
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 0.72
+        if Locale.isLanguageRus {
+            paragraphStyle.lineHeightMultiple = 0.9
+        } else {
+            paragraphStyle.lineHeightMultiple = 0.72
+        }
         paragraphStyle.alignment = .center
         appNameLabel.attributedText = NSMutableAttributedString(
             string: R.string.localizable.startScreenAppName().uppercased(),

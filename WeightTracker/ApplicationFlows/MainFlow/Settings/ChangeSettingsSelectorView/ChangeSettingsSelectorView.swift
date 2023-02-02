@@ -82,7 +82,6 @@ final class ChangeSettingsSelectorView: UIView {
     private func configureTitleLabel(with text: String) {
         titleLabel.attributedText = NSMutableAttributedString(string: text, attributes: [
             NSAttributedString.Key.kern: -0.3,
-//            NSAttributedString.Key.font: R.font.promptSemiBold(size: 20) ?? UIFont.systemFont(ofSize: 20),
             NSAttributedString.Key.font: FontService.shared.localFont(size: 20, bold: false),
             NSAttributedString.Key.foregroundColor: UIColor.weightPrimary
         ])

@@ -137,7 +137,7 @@ final class WTChartModeSelector: UIView {
                         transition.duration = 0.3
                         transition.subtype = direction == .fromRight ? .fromRight : .fromLeft
                         thumb.label.layer.add(transition, forKey: "text")
-                        thumb.label.text = self.currentMode.rawValue.localized
+                        thumb.label.text = self.currentMode.title
                     }
                 } else {
                     let transition = CATransition()
