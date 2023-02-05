@@ -23,6 +23,8 @@ final class AppCoordinator {
         
     // MARK: - APPLICATION START
     func start() {
+        configureApphudSDK()
+        configureAmplitude()
         if userSettingsService.isOnboardingPassed() {
             showMainStage()
         } else {

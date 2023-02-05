@@ -21,6 +21,7 @@ final class PaywallViewController: UIViewController {
     private var startButton = ActionButton(type: .system)
     private var lockImageView = UIImageView()
     private var cancelLabel = UILabel()
+    private var restorePurchaseButton = UILabel()
     private var privacyButton = UILabel()
     private var termsButton = UILabel()
     private var viewForCancelLabel = UIView()
@@ -51,6 +52,7 @@ final class PaywallViewController: UIViewController {
         configureCancelLabel()
         configureLockImageView()
         configureCloseButton()
+        configureRestorePurchaseButton()
     }
     
     private func addSubviews() {
@@ -65,6 +67,7 @@ final class PaywallViewController: UIViewController {
         contentView.addSubview(privacyButton)
         contentView.addSubview(termsButton)
         contentView.addSubview(viewForCancelLabel)
+        contentView.addSubview(restorePurchaseButton)
         viewForCancelLabel.addSubview(lockImageView)
         viewForCancelLabel.addSubview(cancelLabel)
         mainScrollView.showsVerticalScrollIndicator = true
@@ -132,6 +135,48 @@ final class PaywallViewController: UIViewController {
         if let url = URL(string: "https://docs.google.com/document/d/13jBN6nyTQtZUgU5F4wkWmTrQ0qvQEfEH2ZCHO7QMn6k/edit") {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+    
+    // MARK: - RESTORE PURChASE BUTTON
+    private func configureRestorePurchaseButton() {
+        let attrTitle = NSMutableAttributedString(
+            string: R.string.localizable.subscriptionRestorePurchase(),
+            attributes: [
+                NSAttributedString.Key.kern: 0.12,
+                NSAttributedString.Key.font: R.font.openSansMedium(size: Locale.isLanguageRus ? 12 : 14) ?? UIFont.systemFont(ofSize: 22),
+                NSAttributedString.Key.foregroundColor: UIColor.basicDark
+            ]
+        )
+        restorePurchaseButton.textAlignment = .center
+        restorePurchaseButton.numberOfLines = 0
+        restorePurchaseButton.attributedText = attrTitle
+        restorePurchaseButton.isUserInteractionEnabled = true
+        configureRestorePurchaseTapGesture()
+    }
+    
+    @objc private func restorePurchasePressed() {
+        Apphud.restorePurchases { subscriptions, purchases, error in
+            if Apphud.hasActiveSubscription() {
+                // проверяем есть ли вдруг активные подписки, если есть просто переходим на главный экран
+                self.routeToMainStage()
+            } else {
+                if subscriptions?.first?.isActive() ?? false {
+                    // если удалось восстановить подписку, показываем алерт что подписка восстановлена и отправляем после алерта на главный
+                    self.showSimpleAlertWithCompletion(titleText: R.string.localizable.alertMessagePurchaseRestored()) { _ in
+                        self.routeToMainStage()
+                    }
+                } else {
+                    // если нет подписки показываем алерт что подписка не восстановлена и просто закрываем алерт и возвращаемся на пейвол
+                    self.showSimpleAlert(titleText: R.string.localizable.alertMessagePurchasesNotFound())
+                }
+            }
+        }
+    }
+    
+    private func configureRestorePurchaseTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(restorePurchasePressed))
+        tapGesture.cancelsTouchesInView = false
+        restorePurchaseButton.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - LABELS
@@ -345,20 +390,17 @@ extension PaywallViewController {
             make.leading.trailing.equalToSuperview().inset(24)
             make.height.equalTo(72)
             make.top.equalTo(paymentCollectionView.snp.bottom).inset(-27)
-            make.bottom.equalTo(viewForCancelLabel.snp.top).inset(-20)
         }
         
         privacyButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(10)
-            make.top.equalTo(startButton.snp.bottom).inset(-42)
+            make.top.equalTo(startButton.snp.bottom).inset(-32)
             make.width.equalTo(120)
         }
         
         termsButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(24)
-            make.bottom.equalToSuperview().inset(10)
-            make.top.equalTo(startButton.snp.bottom).inset(-42)
+            make.top.equalTo(startButton.snp.bottom).inset(-32)
             make.width.equalTo(120)
         }
         
@@ -385,6 +427,16 @@ extension PaywallViewController {
             make.width.equalTo(28)
             make.trailing.equalToSuperview().inset(30)
             make.top.equalToSuperview().inset(8)
+        }
+        
+        restorePurchaseButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().inset(10)
+            if Locale.isLanguageRus {
+                make.top.equalTo(viewForCancelLabel.snp.bottom).inset(-30)
+            } else {
+                make.top.equalTo(viewForCancelLabel.snp.bottom).inset(-10)
+            }
         }
     }
 }

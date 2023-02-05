@@ -57,6 +57,7 @@
 "Subscription.annual" = "Annually";
 "Subscription.weekly" = "Weekly";
 "Subscription.monthly" = "Monthly";
+"Subscription.restorePurchase" = "Restore Purchase";
 
 // MARK: - Widgets
 "Widget.waist" = "Waist";
@@ -145,3 +146,5 @@
 "Alert.message.incorrectHeight" = "Please enter the correct height";
 "Alert.message.incorrectWeight" = "Please enter the correct weight";
 "Alert.message.incorrectData" = "Please enter the correct measurement";
+"Alert.message.purchaseRestored" = "Your purchase was restored";
+"Alert.message.purchasesNotFound" = "Purchases not found";

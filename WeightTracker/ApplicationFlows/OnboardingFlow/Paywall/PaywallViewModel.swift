@@ -25,6 +25,7 @@ final class SubscriptionViewModel {
     
     // MARK: - Init
     init() {
+        loadProducts()
         makeBenifitCells()
         onboardingWillNotShowingMore()
         isUserSplitGoal()

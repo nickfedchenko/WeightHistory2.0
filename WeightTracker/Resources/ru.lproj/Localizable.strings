@@ -57,6 +57,7 @@
 "Subscription.annual" = "Ежегодная";
 "Subscription.weekly" = "Еженедельная";
 "Subscription.monthly" = "Ежемесячная";
+"Subscription.restorePurchase" = "Восстановить подписку";
 
 // MARK: - Widgets
 "Widget.waist" = "Талия";
@@ -145,3 +146,5 @@
 "Alert.message.incorrectHeight" = "Пожалуйста, введите правильный рост";
 "Alert.message.incorrectWeight" = "Пожалуйста, введите правильный вес";
 "Alert.message.incorrectData" = "Пожалуйста введите корректные измерения";
+"Alert.message.purchaseRestored" = "Ваша подписка восстановлена";
+"Alert.message.purchasesNotFound" = "Активная подписка не найдена";
